@@ -6,49 +6,37 @@
 <title>Housing Program Finder | Fairfax County HCD</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-/* ── FAIRFAX COUNTY HCD DESIGN SYSTEM ─────────────────────────
-   Web tokens: fairfaxcounty.gov/housing live CSS (June 2026)
-   Brand guide tokens: HCD MVV Rollout Brand Guide
+/* ── FAIRFAX COUNTY HCD — GOVERNMENT WEB STANDARD ─────────────
+   Matches fairfaxcounty.gov visual language:
+   Open Sans, white page, navy header, flat borders, no gradients
+   Brand colors used only as functional accents (HCD MVV guide)
    ─────────────────────────────────────────────────────────── */
 :root {
-  /* --- Web system tokens (live site) --- */
-  --navyBlue:        #091F30;
-  --primaryAccent:   #075270;
-  --primaryAccentDK: #033B52;
-  --baseFontColor:   #333333;
-  --ltBlueGray:      #F5F8F9;
-  --themeGrayBlue:   #f7f9fa;
-  --ltGray:          #C7CFD5;
-  --dkGray:          #9FACB6;
-  --themeRed:        #BC314A;
-  --themeTan:        #D3BB8D;
-  --themeTanLt:      #F6F1E8;
-  /* --- HCD Brand Guide colors --- */
-  --hcd-blue:        #004AAC;   /* Royal Blue  */
-  --hcd-blue-lt:     #D9E7FA;
-  --hcd-blue-dk:     #002760;
-  --hcd-green:       #57AC19;   /* Harmony Green */
-  --hcd-green-lt:    #E6F4D7;
-  --hcd-green-dk:    #2B5A06;
-  --hcd-orange:      #F69325;   /* Lively Coral  */
-  --hcd-orange-lt:   #FEF3E2;
-  --hcd-orange-dk:   #7A4400;
-  /* --- Semantic aliases --- */
-  --danger:          #BC314A;
-  --danger-lt:       rgba(188,49,74,0.08);
-  --danger-dk:       #8B2228;
-  --green-lt:        #E6F4D7;
-  --green-dk:        #2B5A06;
-  --info-lt:         #D9E7FA;
-  --info-dk:         #002760;
-  --warn-lt:         #FEF3E2;
-  --warn-dk:         #7A4400;
-  --font:            'Poppins', sans-serif;
-  --r-sm:            12px;
-  --r-md:            22px;
-  --r-lg:            27px;
+  --navy:      #1B2A3B;   /* fairfax header navy              */
+  --blue:      #004AAC;   /* HCD Royal Blue — links, accents  */
+  --blue-lt:   #E8F0FB;
+  --blue-bdr:  #B8CEF0;
+  --green:     #57AC19;   /* HCD Harmony Green — CTAs, success*/
+  --green-dk:  #3A7210;
+  --green-lt:  #EBF5DC;
+  --green-bdr: #AADA78;
+  --orange:    #F69325;   /* HCD Lively Coral — highlights    */
+  --orange-lt: #FEF3E2;
+  --orange-bdr:#F6C884;
+  --red:       #B52B2B;   /* alerts                           */
+  --red-lt:    #FAEAEA;
+  --red-bdr:   #E8A8A8;
+  --body-bg:   #FFFFFF;
+  --page-bg:   #F4F5F6;   /* fairfax light gray page bg       */
+  --txt:       #1A1A1A;
+  --txt-md:    #444444;
+  --txt-lt:    #767676;
+  --bdr:       #CCCCCC;
+  --bdr-lt:    #E5E5E5;
+  --row-alt:   #F8F9FA;
+  --font:      'Open Sans', Arial, sans-serif;
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -56,902 +44,480 @@ html { scroll-behavior: smooth; }
 
 body {
   font-family: var(--font);
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 1.5;
-  color: var(--baseFontColor);
-  background: var(--ltBlueGray);
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--txt);
+  background: var(--page-bg);
   -webkit-font-smoothing: antialiased;
 }
 
-/* ── HEADER ─────────────────────────────────────────────────── */
-.site-header {
-  background: var(--hcd-blue);
-  padding: 0;
-  border-bottom: 4px solid var(--hcd-orange);
+/* ── SKIP LINK ───────────────────────────────────────────────── */
+.skip-link {
+  position: absolute; top: -40px; left: 0;
+  background: var(--navy); color: #fff;
+  padding: 8px 16px; font-size: 13px; font-weight: 600;
+  text-decoration: none; z-index: 100;
 }
-.header-inner {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 18px 24px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-}
-.dept-name {
-  display: flex;
-  flex-direction: column;
-}
-.dept-name span:first-child {
-  font-size: 11px;
-  font-weight: 400;
-  color: rgba(255,255,255,0.65);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-}
-.dept-name span:last-child {
-  font-size: 16px;
-  font-weight: 700;
-  color: #fff;
-  line-height: 1.2;
-}
-.lang-toggle {
-  display: flex;
-  gap: 2px;
-  background: rgba(255,255,255,0.15);
-  border-radius: 28px;
-  padding: 3px;
-  flex-shrink: 0;
-}
-.lang-btn {
-  font-family: var(--font);
-  font-size: 12px;
-  font-weight: 700;
-  padding: 5px 16px;
-  border-radius: 28px;
-  border: none;
-  cursor: pointer;
-  background: transparent;
-  color: rgba(255,255,255,0.7);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  transition: all 0.15s;
-}
-.lang-btn.active {
-  background: #fff;
-  color: var(--hcd-blue);
-}
+.skip-link:focus { top: 0; }
 
-/* ── HERO ───────────────────────────────────────────────────── */
-.hero {
-  background: var(--hcd-blue);
-  padding: 44px 24px 64px;
-  text-align: center;
-  position: relative;
+/* ── HEADER ─────────────────────────────────────────────────── */
+.site-header { background: var(--navy); }
+.header-top {
+  display: flex; align-items: center; justify-content: space-between;
+  max-width: 960px; margin: 0 auto; padding: 14px 20px; gap: 12px;
 }
-.hero::after {
-  content: '';
-  position: absolute;
-  bottom: 0; left: 0; right: 0;
-  height: 36px;
-  background: var(--ltBlueGray);
-  clip-path: ellipse(52% 100% at 50% 100%);
+.dept-wordmark { display: flex; flex-direction: column; }
+.dept-wordmark .county { font-size: 11px; color: rgba(255,255,255,.65); letter-spacing: .04em; text-transform: uppercase; line-height: 1.3; }
+.dept-wordmark .dept   { font-size: 15px; font-weight: 700; color: #fff; line-height: 1.25; }
+
+.lang-toggle { display: flex; gap: 1px; border: 1px solid rgba(255,255,255,.3); border-radius: 3px; overflow: hidden; flex-shrink: 0; }
+.lang-btn {
+  font-family: var(--font); font-size: 12px; font-weight: 600;
+  padding: 5px 13px; border: none; cursor: pointer;
+  background: transparent; color: rgba(255,255,255,.7);
+  text-transform: uppercase; letter-spacing: .04em; transition: all .12s;
 }
-.hero-tag {
-  display: inline-block;
-  background: var(--hcd-orange);
-  color: #fff;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  padding: 5px 16px;
-  border-radius: 28px;
-  margin-bottom: 18px;
+.lang-btn:hover { color: #fff; background: rgba(255,255,255,.1); }
+.lang-btn.active { background: #fff; color: var(--navy); }
+
+/* Orange accent bar — HCD brand identity */
+.header-accent { height: 4px; background: var(--orange); }
+
+/* ── PAGE HEADER ─────────────────────────────────────────────── */
+.page-header {
+  background: var(--navy);
+  border-bottom: 3px solid var(--blue);
+  padding: 28px 20px 24px;
 }
-.hero h1 {
-  font-size: 28px;
-  font-weight: 700;
-  color: #fff;
-  line-height: 1.2;
-  margin-bottom: 12px;
-  max-width: 560px;
-  margin-left: auto;
-  margin-right: auto;
+.page-header-inner { max-width: 960px; margin: 0 auto; }
+.page-header h1 {
+  font-size: 22px; font-weight: 700; color: #fff;
+  margin-bottom: 6px; line-height: 1.25;
 }
-.hero p {
-  font-size: 15px;
-  color: rgba(255,255,255,0.85);
-  max-width: 480px;
-  margin: 0 auto;
-  font-weight: 400;
+.page-header p {
+  font-size: 14px; color: rgba(255,255,255,.78);
+  max-width: 600px; line-height: 1.5;
 }
 
 /* ── MAIN ───────────────────────────────────────────────────── */
-.main {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 32px 24px 64px;
+.main { max-width: 960px; margin: 0 auto; padding: 28px 20px 60px; }
+
+/* ── PROGRESS ────────────────────────────────────────────────── */
+.progress-bar {
+  display: flex; align-items: center; gap: 0;
+  margin-bottom: 24px; background: #fff;
+  border: 1px solid var(--bdr); border-radius: 3px;
+  overflow: hidden;
+}
+.prog-step {
+  display: flex; align-items: center; gap: 10px;
+  padding: 12px 18px; flex: 1;
+  border-right: 1px solid var(--bdr-lt);
+  font-size: 13px; color: var(--txt-lt); font-weight: 400;
+  background: #fff; transition: background .15s;
+}
+.prog-step:last-child { border-right: none; }
+.prog-step.active { background: var(--blue-lt); color: var(--blue); font-weight: 600; }
+.prog-step.done   { background: var(--green-lt); color: var(--green-dk); font-weight: 600; }
+.prog-num {
+  width: 24px; height: 24px; border-radius: 50%; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px; font-weight: 700; background: var(--bdr);
+  color: #fff; line-height: 1;
+}
+.prog-step.active .prog-num { background: var(--blue); }
+.prog-step.done   .prog-num { background: var(--green); }
+
+/* ── SECTION BLOCK ───────────────────────────────────────────── */
+.section-block {
+  background: #fff; border: 1px solid var(--bdr);
+  border-top: 3px solid var(--blue);
+  margin-bottom: 20px; padding: 24px;
+}
+.section-block h2 {
+  font-size: 16px; font-weight: 700; color: var(--txt);
+  margin-bottom: 4px;
+}
+.section-block .section-sub {
+  font-size: 13px; color: var(--txt-lt); margin-bottom: 20px; line-height: 1.5;
 }
 
-/* ── PROGRESS STEPS ─────────────────────────────────────────── */
-.steps {
-  display: flex;
-  align-items: center;
-  gap: 0;
-  margin-bottom: 28px;
-}
-.step-item {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  flex: 1;
-}
-.step-num {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  background: var(--ltGray);
-  color: #fff;
-  font-size: 13px;
-  font-weight: 700;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  transition: background 0.2s;
-}
-.step-num.active  { background: var(--hcd-blue); }
-.step-num.done    { background: var(--hcd-green); }
-.step-label {
-  font-size: 12px;
-  font-weight: 500;
-  color: var(--dkGray);
-  line-height: 1.2;
-  transition: color 0.2s;
-}
-.step-label.active { color: var(--hcd-blue); }
-.step-label.done   { color: var(--hcd-green-dk); }
-.step-line {
-  flex: 0 0 24px;
-  height: 2px;
-  background: var(--ltGray);
-  transition: background 0.2s;
-}
-.step-line.done { background: var(--hcd-green); }
-
-/* ── CARD ───────────────────────────────────────────────────── */
-.card {
-  background: #fff;
-  border-radius: var(--r-sm);
-  box-shadow: inset 2px 3px 7px 0 rgba(0,54,103,.10), 2px 2px 7px 0 rgba(0,54,103,.08);
-  padding: 28px;
-  margin-bottom: 20px;
-}
-.card-title {
-  font-size: 18px;
-  font-weight: 700;
-  color: var(--hcd-blue-dk);
-  margin-bottom: 6px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-.card-title-icon {
-  width: 34px;
-  height: 34px;
-  border-radius: 8px;
-  background: var(--hcd-blue-lt);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-.card-sub {
-  font-size: 13.5px;
-  color: var(--dkGray);
-  font-weight: 400;
-  margin-bottom: 22px;
-  line-height: 1.5;
-}
-
-/* ── SIZE BUTTONS ───────────────────────────────────────────── */
-.sz-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 10px; margin-bottom: 10px; }
-.sz-grid-2 { display: grid; grid-template-columns: repeat(4,1fr); gap: 10px; }
+/* ── HOUSEHOLD SIZE ──────────────────────────────────────────── */
+.sz-grid { display: grid; grid-template-columns: repeat(8, 1fr); gap: 8px; margin-bottom: 8px; }
 .sz-btn {
-  border: 2px solid var(--ltGray);
-  border-radius: var(--r-sm);
-  padding: 12px 4px 10px;
-  text-align: center;
-  cursor: pointer;
-  background: #fff;
-  color: var(--dkGray);
-  font-family: var(--font);
-  font-size: 12px;
-  font-weight: 500;
-  line-height: 1.3;
-  transition: all .14s;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2px;
+  border: 1px solid var(--bdr); padding: 10px 4px 8px;
+  text-align: center; cursor: pointer; background: #fff;
+  color: var(--txt-md); font-family: var(--font);
+  font-size: 12px; line-height: 1.3; transition: all .12s;
+  border-radius: 2px;
 }
-.sz-btn:hover:not(.active) {
-  border-color: var(--hcd-blue);
-  color: var(--hcd-blue);
-  background: var(--hcd-blue-lt);
-}
-.sz-btn.active {
-  background: var(--hcd-blue);
-  border-color: var(--hcd-blue);
-  color: #fff;
-}
-.sz-num {
-  font-size: 24px;
-  font-weight: 700;
-  display: block;
-  line-height: 1;
-}
-.sz-hint {
-  font-size: 12px;
-  color: var(--dkGray);
-  margin-top: 10px;
-  line-height: 1.45;
-}
+.sz-btn:hover:not(.active) { border-color: var(--blue); color: var(--blue); background: var(--blue-lt); }
+.sz-btn.active { background: var(--blue); border-color: var(--blue); color: #fff; font-weight: 600; }
+.sz-num { font-size: 20px; font-weight: 700; display: block; line-height: 1.1; }
+.sz-hint { font-size: 12px; color: var(--txt-lt); margin-top: 8px; }
 
-/* ── INCOME ─────────────────────────────────────────────────── */
-.income-row {
-  display: flex;
-  align-items: baseline;
-  gap: 12px;
-  margin-bottom: 8px;
+/* ── INCOME ──────────────────────────────────────────────────── */
+.income-row { display: flex; align-items: baseline; gap: 14px; margin-bottom: 10px; }
+.income-val { font-size: 36px; font-weight: 700; color: var(--txt); letter-spacing: -.02em; line-height: 1; }
+.ami-tag {
+  font-size: 12px; font-weight: 600; padding: 3px 10px;
+  border: 1px solid; border-radius: 2px; white-space: nowrap;
 }
-.income-val {
-  font-size: 40px;
-  font-weight: 700;
-  color: var(--primaryAccentDK);
-  line-height: 1;
-  letter-spacing: -.02em;
-}
-.ami-pill {
-  font-size: 12px;
-  font-weight: 700;
-  padding: 4px 14px;
-  border-radius: 28px;
-  text-transform: uppercase;
-  letter-spacing: .04em;
-  white-space: nowrap;
-}
-.ami-crisis  { background: rgba(188,49,74,.12); color: #8B2228; }
-.ami-low     { background: var(--hcd-blue-lt);  color: var(--primaryAccentDK); }
-.ami-mid     { background: var(--hcd-blue-lt);  color: var(--hcd-blue-dk); }
-.ami-work    { background: var(--hcd-green-lt);  color: var(--hcd-green-dk); }
-.ami-market  { background: var(--ltGray);         color: var(--baseFontColor); }
+.ami-crisis { background: var(--red-lt);    border-color: var(--red-bdr);    color: var(--red); }
+.ami-low    { background: var(--blue-lt);   border-color: var(--blue-bdr);   color: var(--blue); }
+.ami-mid    { background: var(--blue-lt);   border-color: var(--blue-bdr);   color: var(--blue); }
+.ami-work   { background: var(--green-lt);  border-color: var(--green-bdr);  color: var(--green-dk); }
+.ami-market { background: var(--row-alt);   border-color: var(--bdr);        color: var(--txt-md); }
 
 input[type="range"] {
-  width: 100%;
-  height: 6px;
-  accent-color: var(--primaryAccent);
-  cursor: pointer;
-  margin: 12px 0 8px;
+  width: 100%; accent-color: var(--blue);
+  cursor: pointer; margin: 10px 0 6px; height: 4px;
 }
 .range-labels {
-  display: flex;
-  justify-content: space-between;
-  font-size: 11px;
-  color: var(--dkGray);
-  margin-bottom: 18px;
+  display: flex; justify-content: space-between;
+  font-size: 11px; color: var(--txt-lt); margin-bottom: 18px;
 }
-.fpl-banner {
-  display: none;
-  background: rgba(188,49,74,.08);
-  border: 1.5px solid rgba(188,49,74,.3);
-  border-radius: var(--r-sm);
-  padding: 12px 16px;
-  font-size: 13.5px;
-  color: var(--danger-dk);
-  line-height: 1.5;
+.fpl-notice {
+  display: none; background: var(--red-lt); border-left: 4px solid var(--red);
+  padding: 10px 14px; font-size: 13px; color: #6B1A1A; line-height: 1.5;
   margin-top: 10px;
 }
-.fpl-banner.show { display: block; }
+.fpl-notice.show { display: block; }
 
-/* ── QUICK PICKS ────────────────────────────────────────────── */
-.quick-label {
-  font-size: 11px;
-  font-weight: 700;
-  color: var(--dkGray);
-  text-transform: uppercase;
-  letter-spacing: .08em;
-  margin-bottom: 8px;
-}
-.quick-grid { display: flex; flex-wrap: wrap; gap: 7px; }
+/* Quick picks */
+.quick-label { font-size: 12px; font-weight: 600; color: var(--txt-md); margin-bottom: 8px; text-transform: uppercase; letter-spacing: .04em; }
+.quick-grid { display: flex; flex-wrap: wrap; gap: 6px; }
 .quick-btn {
-  font-family: var(--font);
-  font-size: 12px;
-  font-weight: 700;
-  border: 2px solid var(--ltGray);
-  border-radius: 28px;
-  padding: 5px 16px;
-  cursor: pointer;
-  background: #fff;
-  color: var(--hcd-blue);
-  transition: all .14s;
-  text-transform: uppercase;
-  letter-spacing: .04em;
+  font-family: var(--font); font-size: 12px; font-weight: 600;
+  border: 1px solid var(--bdr); border-radius: 2px;
+  padding: 4px 12px; cursor: pointer; background: #fff;
+  color: var(--blue); transition: all .12s;
 }
-.quick-btn:hover {
-  border-color: var(--hcd-blue);
-  background: var(--hcd-blue-lt);
-}
+.quick-btn:hover { border-color: var(--blue); background: var(--blue-lt); }
 
-/* ── FIND BUTTON ────────────────────────────────────────────── */
-.find-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  width: 100%;
-  padding: 16px;
-  border-radius: 28px;
-  border: 3px solid transparent;
-  cursor: pointer;
-  font-family: var(--font);
-  font-size: 16px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: .06em;
-  background: var(--hcd-green);
-  color: #fff;
-  margin-top: 8px;
-  transition: all .15s;
+/* ── SUBMIT BUTTON ───────────────────────────────────────────── */
+.submit-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 12px 28px; border: 2px solid var(--green);
+  background: var(--green); color: #fff; cursor: pointer;
+  font-family: var(--font); font-size: 15px; font-weight: 700;
+  border-radius: 2px; transition: all .13s; margin-top: 8px;
+  text-transform: uppercase; letter-spacing: .04em;
 }
-.find-btn:hover {
-  background: #fff;
-  border-color: var(--hcd-green);
-  color: var(--hcd-green-dk);
-}
-.find-btn:active { transform: scale(0.99); }
+.submit-btn:hover { background: var(--green-dk); border-color: var(--green-dk); }
+.submit-btn:active { transform: translateY(1px); }
 
 /* ── RESULTS ─────────────────────────────────────────────────── */
-.results-section { display: none; }
-.results-section.show { display: block; }
+.results-wrap { display: none; }
+.results-wrap.show { display: block; }
 
 .results-header {
-  background: var(--hcd-blue);
-  border-radius: var(--r-sm);
-  padding: 24px 28px;
-  margin-bottom: 20px;
+  background: var(--navy); padding: 18px 24px;
+  margin-bottom: 0; border-bottom: 3px solid var(--orange);
 }
-.results-header h2 {
-  font-size: 20px;
-  font-weight: 700;
-  color: #fff;
-  margin-bottom: 4px;
-}
-.results-header p {
-  font-size: 13px;
-  color: rgba(255,255,255,.75);
-  font-weight: 400;
-}
+.results-header h2 { font-size: 17px; font-weight: 700; color: #fff; margin-bottom: 3px; }
+.results-header p  { font-size: 13px; color: rgba(255,255,255,.72); }
 .results-header strong { color: #fff; font-weight: 700; }
 
-/* ── 3-COLUMN PROGRAM GRID ──────────────────────────────────── */
+/* 3-column grid */
 .prog-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 14px;
-  margin-bottom: 20px;
-  align-items: start;
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 0; border: 1px solid var(--bdr);
+  border-top: none; margin-bottom: 20px;
 }
-.prog-col {
-  background: #fff;
-  border-radius: var(--r-sm);
-  box-shadow: inset 2px 3px 7px 0 rgba(0,54,103,.07), 2px 2px 7px 0 rgba(0,54,103,.06);
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-}
+.prog-col { border-right: 1px solid var(--bdr); }
+.prog-col:last-child { border-right: none; }
+
 .prog-col-head {
-  padding: 14px 16px 12px;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  border-bottom: 3px solid transparent;
+  padding: 12px 16px 10px;
+  border-bottom: 1px solid var(--bdr);
+  border-top: 3px solid var(--bdr);
 }
-.prog-col-head.crisis    { background: rgba(188,49,74,.07);  border-color: #BC314A; }
-.prog-col-head.rental    { background: var(--hcd-blue-lt);   border-color: var(--hcd-blue); }
-.prog-col-head.ownership { background: var(--hcd-green-lt);  border-color: var(--hcd-green); }
-.prog-col-title {
-  font-size: 12px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: .07em;
-  display: flex;
-  align-items: center;
-  gap: 7px;
+.prog-col-head.crisis    { border-top-color: var(--red); }
+.prog-col-head.rental    { border-top-color: var(--blue); }
+.prog-col-head.ownership { border-top-color: var(--green); }
+
+.prog-col-label {
+  font-size: 11px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: .07em; display: flex; align-items: center; gap: 7px;
 }
-.prog-col-title.crisis    { color: #8B2228; }
-.prog-col-title.rental    { color: var(--hcd-blue-dk); }
-.prog-col-title.ownership { color: var(--hcd-green-dk); }
-.prog-col-dot {
-  width: 8px; height: 8px;
-  border-radius: 50%;
-  flex-shrink: 0;
+.prog-col-label.crisis    { color: var(--red); }
+.prog-col-label.rental    { color: var(--blue); }
+.prog-col-label.ownership { color: var(--green-dk); }
+
+.prog-col-count { font-size: 12px; color: var(--txt-lt); margin-top: 2px; }
+
+.prog-col-body { padding: 0; }
+
+/* Program rows inside each column */
+.prog-row {
+  display: block; padding: 14px 16px;
+  border-bottom: 1px solid var(--bdr-lt);
+  text-decoration: none; color: inherit;
+  transition: background .11s;
 }
-.prog-col-count {
-  font-size: 11px;
-  font-weight: 500;
-  color: var(--dkGray);
+.prog-row:last-child { border-bottom: none; }
+.prog-row:hover { background: var(--blue-lt); }
+.prog-row.status-row { background: var(--row-alt); }
+.prog-row.status-row:hover { background: var(--blue-lt); }
+
+.prog-row-name {
+  font-size: 13px; font-weight: 600; margin-bottom: 4px; line-height: 1.3;
 }
-.prog-col-body {
-  padding: 10px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  flex: 1;
+.prog-row-name.crisis    { color: var(--red); }
+.prog-row-name.rental    { color: var(--blue); }
+.prog-row-name.ownership { color: var(--green-dk); }
+
+.prog-row-desc {
+  font-size: 12px; color: var(--txt-md); line-height: 1.5; margin-bottom: 6px;
+}
+.prog-row-link {
+  font-size: 11px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: .04em; text-decoration: none; color: var(--blue);
+}
+.prog-row-link:hover { text-decoration: underline; }
+.prog-row-link.crisis    { color: var(--red); }
+.prog-row-link.rental    { color: var(--blue); }
+.prog-row-link.ownership { color: var(--green-dk); }
+
+.prog-status-tag {
+  display: inline-block; font-size: 10px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .05em;
+  background: var(--orange-lt); border: 1px solid var(--orange-bdr);
+  color: #7A4400; padding: 2px 7px; border-radius: 2px; margin-bottom: 5px;
 }
 
-/* Slim program item inside column */
-.prog-item {
-  background: var(--ltBlueGray);
-  border-radius: 8px;
-  padding: 12px 13px;
-  text-decoration: none;
-  display: block;
-  transition: background .13s, box-shadow .13s;
-}
-.prog-item:hover {
-  background: #fff;
-  box-shadow: 0 2px 10px rgba(0,54,103,.10);
-}
-.prog-item-name {
-  font-size: 13px;
-  font-weight: 700;
-  line-height: 1.3;
-  margin-bottom: 4px;
-}
-.prog-item-name.crisis    { color: #8B2228; }
-.prog-item-name.rental    { color: var(--hcd-blue-dk); }
-.prog-item-name.ownership { color: var(--hcd-green-dk); }
-.prog-item-desc {
-  font-size: 11.5px;
-  color: var(--dkGray);
-  line-height: 1.45;
-  margin-bottom: 7px;
-  font-weight: 400;
-}
-.prog-item-link {
-  font-size: 11px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: .04em;
-  text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-  gap: 3px;
-}
-.prog-item-link.crisis    { color: #BC314A; }
-.prog-item-link.rental    { color: var(--hcd-blue); }
-.prog-item-link.ownership { color: var(--hcd-green-dk); }
-
-/* Status item (no external link, housing-status based) */
-.prog-item-status {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  font-size: 10.5px;
-  font-weight: 700;
-  color: var(--hcd-orange-dk);
-  background: var(--hcd-orange-lt);
-  padding: 2px 9px;
-  border-radius: 28px;
-  text-transform: uppercase;
-  letter-spacing: .04em;
-  margin-bottom: 6px;
+.prog-empty {
+  padding: 16px; font-size: 13px; color: var(--txt-lt);
+  font-style: italic; border-bottom: none;
 }
 
-/* Empty column state */
-.prog-col-empty {
-  padding: 14px 16px;
-  font-size: 12.5px;
-  color: var(--dkGray);
-  font-style: italic;
-  line-height: 1.5;
+/* ── ALERT ───────────────────────────────────────────────────── */
+.alert {
+  padding: 12px 16px; margin-bottom: 16px;
+  font-size: 13px; line-height: 1.55; border-left: 4px solid;
 }
+.alert strong { font-weight: 700; }
+.alert-danger { background: var(--red-lt);  border-color: var(--red);  color: #6B1A1A; }
+.alert-info   { background: var(--blue-lt); border-color: var(--blue); color: #002760; }
 
-@media (max-width: 700px) {
-  .prog-grid { grid-template-columns: 1fr; }
+/* ── CONTACT BLOCK ───────────────────────────────────────────── */
+.contact-block {
+  background: var(--navy); padding: 20px 24px;
+  display: flex; align-items: flex-start; justify-content: space-between;
+  gap: 24px; flex-wrap: wrap; margin-bottom: 16px;
 }
+.contact-block h3 { font-size: 15px; font-weight: 700; color: #fff; margin-bottom: 4px; }
+.contact-block p  { font-size: 13px; color: rgba(255,255,255,.75); }
+.contact-links { display: flex; flex-direction: column; gap: 8px; flex-shrink: 0; }
+.c-link {
+  display: inline-flex; align-items: center; gap: 7px;
+  font-family: var(--font); font-size: 13px; font-weight: 700;
+  text-decoration: none; padding: 8px 16px; border: 2px solid;
+  border-radius: 2px; white-space: nowrap; transition: all .12s;
+}
+.c-link-primary { background: var(--orange); border-color: var(--orange); color: #fff; }
+.c-link-primary:hover { background: #D07A10; border-color: #D07A10; }
+.c-link-secondary { background: transparent; border-color: rgba(255,255,255,.4); color: #fff; }
+.c-link-secondary:hover { background: rgba(255,255,255,.1); }
 
-/* ── PROGRAM CARD ───────────────────────────────────────────── */
-.prog-card {
-  display: flex;
-  align-items: flex-start;
-  gap: 14px;
-  background: var(--ltBlueGray);
-  border-radius: var(--r-sm);
-  padding: 16px 18px;
-  margin-bottom: 8px;
-  text-decoration: none;
-  transition: background .14s, box-shadow .14s;
-  cursor: pointer;
-}
-.prog-card:hover {
-  background: #fff;
-  box-shadow: inset 2px 3px 7px 0 rgba(0,54,103,.10), 2px 2px 7px 0 rgba(0,54,103,.08);
-}
-.prog-icon {
-  width: 38px;
-  height: 38px;
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-.prog-body { flex: 1; min-width: 0; }
-.prog-name {
-  font-size: 14px;
-  font-weight: 700;
-  color: var(--hcd-blue-dk);
-  margin-bottom: 4px;
-  line-height: 1.3;
-}
-.prog-desc {
-  font-size: 12.5px;
-  color: var(--dkGray);
-  line-height: 1.5;
-  margin-bottom: 8px;
-  font-weight: 400;
-}
-.prog-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  font-size: 12px;
-  font-weight: 700;
-  color: var(--hcd-blue);
-  text-decoration: none;
-  text-transform: uppercase;
-  letter-spacing: .04em;
-  border-bottom: 1.5px solid var(--hcd-blue-lt);
-  padding-bottom: 1px;
-  transition: color .12s;
-}
-.prog-link:hover { color: var(--hcd-blue-dk); }
-.prog-arrow {
-  color: var(--ltGray);
-  flex-shrink: 0;
-  margin-top: 2px;
-}
-
-/* Status card */
-.status-card {
-  background: var(--ltBlueGray);
-  border-radius: var(--r-sm);
-  padding: 14px 16px;
-  margin-bottom: 8px;
-}
-.status-card-name {
-  font-size: 14px;
-  font-weight: 700;
-  color: var(--hcd-blue-dk);
-  margin-bottom: 4px;
-}
-.status-card-desc {
-  font-size: 12.5px;
-  color: var(--dkGray);
-  line-height: 1.5;
-  margin-bottom: 8px;
-  font-weight: 400;
-}
-.status-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  font-size: 11px;
-  font-weight: 700;
-  color: var(--hcd-orange-dk);
-  background: var(--hcd-orange-lt);
-  padding: 3px 10px;
-  border-radius: 28px;
-  text-transform: uppercase;
-  letter-spacing: .04em;
-  margin-right: 8px;
-}
-
-/* Alert callout */
-.callout {
-  border-radius: var(--r-sm);
-  padding: 16px 18px;
-  margin-bottom: 16px;
-  font-size: 13.5px;
-  line-height: 1.55;
-  font-weight: 400;
-}
-.callout strong { font-weight: 700; }
-.callout-danger { background: rgba(188,49,74,.08); border: 1.5px solid rgba(188,49,74,.25); color: #8B2228; }
-.callout-info   { background: var(--info-lt); border: 1.5px solid rgba(7,82,112,.2); color: var(--info-dk); }
-
-/* ── CONTACT CARD ───────────────────────────────────────────── */
-.contact-card {
-  background: var(--hcd-blue);
-  border-radius: var(--r-lg);
-  padding: 28px;
-  margin-top: 8px;
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 20px;
-  align-items: center;
-}
-.contact-text h3 {
-  font-size: 17px;
-  font-weight: 700;
-  color: #fff;
-  margin-bottom: 6px;
-}
-.contact-text p {
-  font-size: 13px;
-  color: rgba(255,255,255,.8);
-  font-weight: 400;
-  line-height: 1.5;
-}
-.contact-btns { display: flex; flex-direction: column; gap: 8px; flex-shrink: 0; }
-.c-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 11px 20px;
-  border-radius: 28px;
-  font-family: var(--font);
-  font-size: 12.5px;
-  font-weight: 700;
-  text-decoration: none;
-  white-space: nowrap;
-  cursor: pointer;
-  border: 3px solid transparent;
-  text-transform: uppercase;
-  letter-spacing: .05em;
-  transition: all .15s;
-}
-.c-btn-primary { background: var(--hcd-orange); color: #fff; border-color: var(--hcd-orange); }
-.c-btn-primary:hover { background: #fff; color: var(--hcd-orange-dk); border-color: var(--hcd-orange); }
-.c-btn-secondary { background: rgba(255,255,255,.14); color: #fff; border-color: rgba(255,255,255,.35); }
-.c-btn-secondary:hover { background: rgba(255,255,255,.24); }
-
-/* ── DISCLAIMER ─────────────────────────────────────────────── */
+/* ── DISCLAIMER ──────────────────────────────────────────────── */
 .disclaimer {
-  margin-top: 24px;
-  padding: 16px;
-  border-radius: var(--r-sm);
-  background: var(--themeGrayBlue);
-  font-size: 11.5px;
-  color: var(--dkGray);
-  line-height: 1.6;
-  font-weight: 400;
+  font-size: 12px; color: var(--txt-lt); line-height: 1.6;
+  border-top: 1px solid var(--bdr-lt); padding-top: 14px; margin-top: 4px;
 }
-.disclaimer strong { color: var(--baseFontColor); font-weight: 700; }
+.disclaimer strong { color: var(--txt-md); font-weight: 600; }
 
-/* ── BACK BTN ───────────────────────────────────────────────── */
-.back-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-family: var(--font);
-  font-size: 12px;
-  font-weight: 700;
-  color: var(--hcd-blue);
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  margin-bottom: 20px;
-  text-transform: uppercase;
-  letter-spacing: .05em;
-  text-decoration: none;
+/* ── BACK LINK ───────────────────────────────────────────────── */
+.back-link {
+  display: inline-flex; align-items: center; gap: 5px;
+  font-size: 13px; font-weight: 600; color: var(--blue);
+  text-decoration: none; margin-bottom: 16px;
 }
-.back-btn:hover { color: var(--hcd-blue-dk); }
+.back-link:hover { text-decoration: underline; }
 
-/* ── FOOTER ─────────────────────────────────────────────────── */
+/* ── FOOTER ──────────────────────────────────────────────────── */
 .site-footer {
-  background: var(--navyBlue);
-  padding: 36px 24px;
-  text-align: center;
-  margin-top: 40px;
+  background: var(--navy); border-top: 4px solid var(--orange);
+  padding: 28px 20px; margin-top: 32px;
 }
-.footer-tagline {
-  font-size: 14px;
-  font-weight: 700;
-  color: var(--hcd-orange);
-  margin-bottom: 6px;
-  text-transform: uppercase;
-  letter-spacing: .06em;
+.site-footer-inner { max-width: 960px; margin: 0 auto; }
+.footer-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 24px; flex-wrap: wrap; margin-bottom: 16px; }
+.footer-org { font-size: 13px; font-weight: 700; color: #fff; margin-bottom: 4px; }
+.footer-address { font-size: 12px; color: rgba(255,255,255,.6); line-height: 1.7; }
+.footer-links { display: flex; flex-direction: column; gap: 5px; }
+.footer-links a { font-size: 12px; color: rgba(255,255,255,.6); text-decoration: none; }
+.footer-links a:hover { color: #fff; text-decoration: underline; }
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,.12); padding-top: 12px;
+  font-size: 11px; color: rgba(255,255,255,.35);
 }
-.site-footer p {
-  font-size: 12px;
-  color: rgba(255,255,255,.5);
-  line-height: 1.8;
-}
-.site-footer strong { color: rgba(255,255,255,.8); font-weight: 700; }
-.site-footer a { color: rgba(255,255,255,.45); text-decoration: none; font-size: 11px; }
-.site-footer a:hover { color: rgba(255,255,255,.75); }
+.footer-tagline { font-size: 12px; font-weight: 700; color: var(--orange); margin-bottom: 4px; text-transform: uppercase; letter-spacing: .05em; }
 
-/* ── RESPONSIVE ─────────────────────────────────────────────── */
-@media (max-width: 600px) {
-  .header-inner { padding: 0 16px 16px; }
-  .dept-name span:last-child { font-size: 13px; }
-  .hero { padding: 32px 16px 48px; }
-  .hero h1 { font-size: 22px; }
-  .main { padding: 24px 16px 48px; }
-  .card { padding: 20px 16px; }
-  .sz-grid, .sz-grid-2 { gap: 7px; }
-  .sz-num { font-size: 20px; }
-  .income-val { font-size: 32px; }
-  .contact-card { grid-template-columns: 1fr; }
-  .contact-btns { flex-direction: row; }
-  .steps { gap: 2px; }
-  .step-label { font-size: 10px; }
-  .step-line { flex: 0 0 12px; }
+/* ── RESPONSIVE ──────────────────────────────────────────────── */
+@media (max-width: 680px) {
+  .sz-grid { grid-template-columns: repeat(4, 1fr); }
+  .prog-grid { grid-template-columns: 1fr; }
+  .prog-col { border-right: none; border-bottom: 1px solid var(--bdr); }
+  .prog-col:last-child { border-bottom: none; }
+  .contact-block { flex-direction: column; }
+  .income-val { font-size: 28px; }
+  .progress-bar { flex-direction: column; border: none; gap: 2px; }
+  .prog-step { border-right: none; border-bottom: 1px solid var(--bdr-lt); }
+  .footer-top { flex-direction: column; }
 }
 </style>
 </head>
 <body>
 
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
 <header class="site-header">
-  <div class="header-inner">
-    <div class="dept-name">
-      <span>Fairfax County</span>
-      <span>Housing &amp; Community Development</span>
+  <div class="header-top">
+    <div class="dept-wordmark">
+      <span class="county">Fairfax County, Virginia</span>
+      <span class="dept">Dept. of Housing and Community Development</span>
     </div>
     <div class="lang-toggle" role="group" aria-label="Language selection">
       <button class="lang-btn active" data-lang="en" onclick="setLang('en')" aria-pressed="true">English</button>
       <button class="lang-btn" data-lang="es" onclick="setLang('es')" aria-pressed="false">Español</button>
     </div>
   </div>
+  <div class="header-accent"></div>
 </header>
 
-<section class="hero">
-  <div class="hero-tag" data-en="Free resource finder" data-es="Buscador de recursos gratuito">Free resource finder</div>
-  <h1 data-en="Find housing help in Fairfax County" data-es="Encuentre ayuda de vivienda en el Condado de Fairfax">Find housing help in Fairfax County</h1>
-  <p data-en="Answer two quick questions to see which housing programs you may be eligible for." data-es="Responda dos preguntas rápidas para ver qué programas de vivienda puede ser elegible.">Answer two quick questions to see which housing programs you may be eligible for.</p>
-</section>
+<div class="page-header">
+  <div class="page-header-inner">
+    <h1 data-en="Housing Program Finder" data-es="Buscador de Programas de Vivienda">Housing Program Finder</h1>
+    <p data-en="Answer two questions about your household size and income to see which Fairfax County housing programs you may be eligible for." data-es="Responda dos preguntas sobre el tamaño de su hogar y sus ingresos para ver qué programas de vivienda del Condado de Fairfax puede ser elegible.">Answer two questions about your household size and income to see which Fairfax County housing programs you may be eligible for.</p>
+  </div>
+</div>
 
-<main class="main">
+<main id="main-content" class="main">
 
-  <div class="steps" role="list">
-    <div class="step-item" role="listitem">
-      <div class="step-num active" id="s1n">1</div>
-      <div class="step-label active" id="s1l" data-en="Household size" data-es="Tamaño del hogar">Household size</div>
+  <div class="progress-bar" role="list">
+    <div class="prog-step active" role="listitem" id="ps1">
+      <div class="prog-num" id="pn1">1</div>
+      <span data-en="Household size" data-es="Tamaño del hogar">Household size</span>
     </div>
-    <div class="step-line" id="ln1"></div>
-    <div class="step-item" role="listitem">
-      <div class="step-num" id="s2n">2</div>
-      <div class="step-label" id="s2l" data-en="Annual income" data-es="Ingresos anuales">Annual income</div>
+    <div class="prog-step" role="listitem" id="ps2">
+      <div class="prog-num" id="pn2">2</div>
+      <span data-en="Annual income" data-es="Ingresos anuales">Annual income</span>
     </div>
-    <div class="step-line" id="ln2"></div>
-    <div class="step-item" role="listitem">
-      <div class="step-num" id="s3n">3</div>
-      <div class="step-label" id="s3l" data-en="Your programs" data-es="Sus programas">Your programs</div>
+    <div class="prog-step" role="listitem" id="ps3">
+      <div class="prog-num" id="pn3">3</div>
+      <span data-en="Your programs" data-es="Sus programas">Your programs</span>
     </div>
   </div>
 
   <!-- STEP 1 -->
-  <div id="card1" class="card">
-    <div class="card-title">
-      <div class="card-title-icon">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--hcd-blue)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-      </div>
-      <span data-en="Step 1 — How many people live in your household?" data-es="Paso 1 — ¿Cuántas personas viven en su hogar?">Step 1 — How many people live in your household?</span>
-    </div>
-    <p class="card-sub" data-en="Include yourself, your partner or spouse, children, and anyone else who lives with you full time." data-es="Inclúyase a usted mismo, su pareja o cónyuge, hijos y cualquier otra persona que viva con usted a tiempo completo.">Include yourself, your partner or spouse, children, and anyone else who lives with you full time.</p>
-    <div class="sz-grid" role="group">
+  <div class="section-block" id="card1">
+    <h2 data-en="Step 1 — How many people live in your household?" data-es="Paso 1 — ¿Cuántas personas viven en su hogar?">Step 1 — How many people live in your household?</h2>
+    <p class="section-sub" data-en="Include yourself, your partner or spouse, children, and anyone else who lives with you full time." data-es="Inclúyase a usted mismo, su pareja, hijos y cualquier otra persona que viva con usted a tiempo completo.">Include yourself, your partner or spouse, children, and anyone else who lives with you full time.</p>
+    <div class="sz-grid" role="group" aria-label="Household size">
       <button class="sz-btn" data-sz="1"><span class="sz-num">1</span><span data-en="person" data-es="persona">person</span></button>
       <button class="sz-btn" data-sz="2"><span class="sz-num">2</span><span data-en="persons" data-es="personas">persons</span></button>
       <button class="sz-btn" data-sz="3"><span class="sz-num">3</span><span data-en="persons" data-es="personas">persons</span></button>
       <button class="sz-btn" data-sz="4"><span class="sz-num">4</span><span data-en="persons" data-es="personas">persons</span></button>
-    </div>
-    <div class="sz-grid-2" style="margin-top:10px" role="group">
       <button class="sz-btn" data-sz="5"><span class="sz-num">5</span><span data-en="persons" data-es="personas">persons</span></button>
       <button class="sz-btn" data-sz="6"><span class="sz-num">6</span><span data-en="persons" data-es="personas">persons</span></button>
       <button class="sz-btn" data-sz="7"><span class="sz-num">7</span><span data-en="persons" data-es="personas">persons</span></button>
       <button class="sz-btn" data-sz="8"><span class="sz-num">8</span><span data-en="persons" data-es="personas">persons</span></button>
     </div>
-    <p class="sz-hint" data-en="If your household has 8 or more people, select 8." data-es="Si su hogar tiene 8 o más personas, seleccione 8.">If your household has 8 or more people, select 8.</p>
+    <p class="sz-hint" data-en="Select 8 if your household has 8 or more people." data-es="Seleccione 8 si su hogar tiene 8 o más personas.">Select 8 if your household has 8 or more people.</p>
   </div>
 
   <!-- STEP 2 -->
-  <div id="card2" class="card">
-    <div class="card-title">
-      <div class="card-title-icon">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--hcd-blue)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-      </div>
-      <span data-en="Step 2 — What is your total household income before taxes?" data-es="Paso 2 — ¿Cuál es el ingreso total de su hogar antes de impuestos?">Step 2 — What is your total household income before taxes?</span>
-    </div>
-    <p class="card-sub" data-en="Include wages, self-employment, Social Security, disability, child support, and other regular income from all household members." data-es="Incluya salarios, trabajo por cuenta propia, Seguro Social, discapacidad, manutención de hijos y otros ingresos regulares de todos los miembros del hogar.">Include wages, self-employment, Social Security, disability, child support, and other regular income from all household members.</p>
+  <div class="section-block" id="card2">
+    <h2 data-en="Step 2 — What is your total household income before taxes?" data-es="Paso 2 — ¿Cuál es el ingreso total de su hogar antes de impuestos?">Step 2 — What is your total household income before taxes?</h2>
+    <p class="section-sub" data-en="Include wages, self-employment, Social Security, disability, child support, and other regular income from all household members." data-es="Incluya salarios, trabajo por cuenta propia, Seguro Social, discapacidad, manutención y otros ingresos regulares de todos los miembros del hogar.">Include wages, self-employment, Social Security, disability, child support, and other regular income from all household members.</p>
 
     <div class="income-row">
       <div class="income-val" id="income-val" aria-live="polite">$60,000</div>
-      <div class="ami-pill ami-mid" id="ami-pill">50% AMI</div>
+      <span class="ami-tag ami-mid" id="ami-tag">50% AMI</span>
     </div>
     <input type="range" id="income-slider" min="0" max="350000" step="1000" value="60000" aria-label="Annual household income">
     <div class="range-labels">
       <span>$0</span><span>$87,500</span><span>$175,000</span><span>$262,500</span><span>$350,000+</span>
     </div>
-    <div class="fpl-banner" id="fpl-banner"></div>
+    <div class="fpl-notice" id="fpl-notice"></div>
 
-    <div style="margin-top:16px">
-      <div class="quick-label" data-en="Common starting points" data-es="Puntos de partida comunes">Common starting points</div>
+    <div style="margin-top:18px">
+      <div class="quick-label" data-en="Common income amounts" data-es="Ingresos comunes">Common income amounts</div>
       <div class="quick-grid">
-        <button class="quick-btn" data-v="20000">$20K</button>
-        <button class="quick-btn" data-v="35000">$35K</button>
-        <button class="quick-btn" data-v="50000">$50K</button>
-        <button class="quick-btn" data-v="70000">$70K</button>
-        <button class="quick-btn" data-v="90000">$90K</button>
-        <button class="quick-btn" data-v="120000">$120K</button>
-        <button class="quick-btn" data-v="150000">$150K</button>
+        <button class="quick-btn" data-v="20000">$20,000</button>
+        <button class="quick-btn" data-v="35000">$35,000</button>
+        <button class="quick-btn" data-v="50000">$50,000</button>
+        <button class="quick-btn" data-v="70000">$70,000</button>
+        <button class="quick-btn" data-v="90000">$90,000</button>
+        <button class="quick-btn" data-v="120000">$120,000</button>
+        <button class="quick-btn" data-v="150000">$150,000</button>
       </div>
     </div>
   </div>
 
-  <button class="find-btn" onclick="showResults()">
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-    <span data-en="Show my housing programs" data-es="Mostrar mis programas de vivienda">Show my housing programs</span>
+  <button class="submit-btn" onclick="showResults()">
+    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+    <span data-en="Find programs" data-es="Buscar programas">Find programs</span>
   </button>
 
   <!-- RESULTS -->
-  <div class="results-section" id="results" tabindex="-1">
-    <div style="height:32px"></div>
-    <button class="back-btn" onclick="scrollTop()">
-      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
-      <span data-en="Adjust my answers" data-es="Ajustar mis respuestas">Adjust my answers</span>
-    </button>
+  <div class="results-wrap" id="results" tabindex="-1">
+    <div style="height:28px"></div>
+    <a href="#card1" class="back-link" onclick="scrollTop()" role="button">
+      &#8592; <span data-en="Adjust my answers" data-es="Ajustar mis respuestas">Adjust my answers</span>
+    </a>
 
     <div class="results-header">
       <h2 id="res-title">Programs you may qualify for</h2>
-      <p id="res-sub">Based on your household and income</p>
+      <p id="res-sub"></p>
     </div>
 
     <div id="res-body"></div>
 
-    <!-- Contact -->
-    <div class="contact-card">
-      <div class="contact-text">
-        <h3 data-en="Ready to apply? We're here to help." data-es="¿Listo para solicitar? Estamos aquí para ayudar.">Ready to apply? We're here to help.</h3>
-        <p data-en="HCD staff can answer questions, check waitlist status, and guide you through applications." data-es="El personal de HCD puede responder preguntas, verificar el estado de la lista de espera y guiarlo a través de las solicitudes.">HCD staff can answer questions, check waitlist status, and guide you through applications.</p>
+    <div class="contact-block">
+      <div>
+        <h3 data-en="Questions? Contact HCD." data-es="¿Preguntas? Contacte a HCD.">Questions? Contact HCD.</h3>
+        <p data-en="Staff can help you understand your options, check waitlist status, and guide you through the application process." data-es="El personal puede ayudarle a entender sus opciones, verificar el estado de la lista de espera y guiarlo a través del proceso de solicitud.">Staff can help you understand your options, check waitlist status, and guide you through the application process.</p>
       </div>
-      <div class="contact-btns">
-        <a href="https://www.fairfaxcounty.gov/housing/" target="_blank" rel="noopener" class="c-btn c-btn-primary">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      <div class="contact-links">
+        <a href="https://www.fairfaxcounty.gov/housing/" target="_blank" rel="noopener" class="c-link c-link-primary">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
           fairfaxcounty.gov/housing
         </a>
-        <a href="tel:7032465100" class="c-btn c-btn-secondary">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13 19.79 19.79 0 0 1 1.61 4.32 2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.1 6.1l.94-.94a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <a href="tel:7032465100" class="c-link c-link-secondary">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13 19.79 19.79 0 0 1 1.61 4.32 2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.1 6.1l.94-.94a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
           703-246-5100
         </a>
       </div>
     </div>
 
-    <div class="disclaimer">
-      <strong data-en="About these results:" data-es="Acerca de estos resultados:">About these results:</strong>
-      <span data-en=" Eligibility shown is based on federal HUD income limits for the Washington-Arlington-Alexandria area. Actual program eligibility depends on additional factors. Many programs have waitlists. Contact HCD or each program directly to confirm availability. This tool does not constitute a formal eligibility determination." data-es=" La elegibilidad mostrada se basa en los límites de ingresos federales HUD para el área de Washington-Arlington-Alexandria. La elegibilidad real del programa depende de factores adicionales. Muchos programas tienen listas de espera. Contacte a HCD o a cada programa directamente para confirmar la disponibilidad."> Eligibility shown is based on federal HUD income limits for the Washington-Arlington-Alexandria area. Actual program eligibility depends on additional factors. Many programs have waitlists. Contact HCD or each program directly to confirm availability. This tool does not constitute a formal eligibility determination.</span>
-    </div>
+    <p class="disclaimer">
+      <strong data-en="Note:" data-es="Nota:">Note:</strong>
+      <span data-en=" Eligibility shown is based on federal HUD income limits for the Washington-Arlington-Alexandria area. Actual program eligibility depends on additional factors and many programs have waitlists. Contact HCD or each program directly to confirm current availability. This tool does not constitute a formal determination of eligibility." data-es=" La elegibilidad mostrada se basa en los límites de ingresos HUD para el área de Washington-Arlington-Alexandria. La elegibilidad real depende de factores adicionales y muchos programas tienen listas de espera. Contacte a HCD o a cada programa directamente para confirmar la disponibilidad. Esta herramienta no constituye una determinación formal de elegibilidad."> Eligibility shown is based on federal HUD income limits for the Washington-Arlington-Alexandria area. Actual program eligibility depends on additional factors and many programs have waitlists. Contact HCD or each program directly to confirm current availability. This tool does not constitute a formal determination of eligibility.</span>
+    </p>
   </div>
 
 </main>
 
 <footer class="site-footer">
-  <p class="footer-tagline">Empowering Communities, Building Futures.</p>
-  <p><strong>Fairfax County Dept. of Housing and Community Development</strong></p>
-  <p>3700 Pender Drive, Fairfax, VA 22030 &nbsp;·&nbsp; 703-246-5100</p>
-  <p style="margin-top:8px">
-    <a href="https://www.fairfaxcounty.gov/housing/">fairfaxcounty.gov/housing</a>
-    &nbsp;·&nbsp;
-    <a href="https://www.fairfaxcounty.gov/housing/waitlist">Waitlist status</a>
-    &nbsp;·&nbsp;
-    <a href="https://www.fairfaxcounty.gov/homeless/">Homelessness services</a>
-  </p>
-  <p style="margin-top:12px;font-size:10px;color:rgba(255,255,255,.28)">HUD FY2026 · Updated June 2026 · Informational tool only</p>
+  <div class="site-footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-tagline">Empowering Communities, Building Futures.</div>
+        <div class="footer-org">Fairfax County Dept. of Housing and Community Development</div>
+        <div class="footer-address">3700 Pender Drive, Fairfax, VA 22030<br>703-246-5100</div>
+      </div>
+      <div class="footer-links">
+        <a href="https://www.fairfaxcounty.gov/housing/">HCD Homepage</a>
+        <a href="https://www.fairfaxcounty.gov/housing/waitlist">Affordable Housing Waitlist</a>
+        <a href="https://www.fairfaxcounty.gov/homeless/">Homelessness Services</a>
+        <a href="https://www.fairfaxcounty.gov/housing/homeownership">Affordable Homeownership</a>
+        <a href="https://www.fairfaxcounty.gov/housing/rentalhousing">Rental Housing</a>
+      </div>
+    </div>
+    <div class="footer-bottom">HUD FY2026 income limits &nbsp;·&nbsp; Updated June 2026 &nbsp;·&nbsp; Informational tool only</div>
+  </div>
 </footer>
 
 <script>
@@ -959,37 +525,36 @@ const AMI={30:[34890,39870,44850,49830,53820,57810,61800,65790],40:[46500,53150,
 const FPL={1:15650,2:21150,3:26650,4:32150,5:37650,6:43150,7:48650,8:54150};
 
 const PROGS=[
-  {id:'crisis',en_label:'Crisis & emergency help',es_label:'Ayuda de crisis y emergencia',dot:'#BC314A',count_style:'background:rgba(188,49,74,.1);color:#8B2228',items:[
-    {status:true,en_name:'Emergency Shelters',es_name:'Albergues de emergencia',en_desc:'Immediate shelter if you have no safe place to stay tonight. Open regardless of income or housing status.',es_desc:'Albergue inmediato si no tiene un lugar seguro donde quedarse esta noche. Abierto independientemente del ingreso.',url:'https://www.fairfaxcounty.gov/homeless/emergency-shelters',ic:'rgba(188,49,74,.1)',is:'#BC314A'},
-    {status:true,en_name:'Rapid Rehousing',es_name:'Realojamiento Rápido',en_desc:'Short-term rental help and case management to get you into stable housing quickly. Based on your housing situation, not income.',es_desc:'Ayuda de alquiler a corto plazo y gestión de casos. Basado en su situación de vivienda, no en ingresos.',url:'https://www.fairfaxcounty.gov/homeless/',ic:'rgba(188,49,74,.1)',is:'#BC314A'},
-    {status:true,en_name:'Permanent Supportive Housing',es_name:'Vivienda de Apoyo Permanente',en_desc:'Long-term housing with support services for individuals experiencing chronic homelessness who also have a disability.',es_desc:'Vivienda a largo plazo con servicios de apoyo para personas sin hogar crónicas con una discapacidad.',url:'https://www.fairfaxcounty.gov/homeless/',ic:'rgba(188,49,74,.1)',is:'#BC314A'},
-    {maxAMI:30,en_name:'Homelessness Prevention',es_name:'Prevención de Personas sin Hogar',en_desc:'Financial help to avoid eviction or utility shutoff. For households at or below 30% of the area median income.',es_desc:'Ayuda financiera para evitar el desalojo o el corte de servicios públicos.',url:'https://www.fairfaxcounty.gov/homeless/prevention',ic:'rgba(188,49,74,.1)',is:'#BC314A'},
-    {maxAMI:50,en_name:'Rental Subsidy & Services Program',es_name:'Programa de Subsidio de Alquiler y Servicios',en_desc:'Ongoing rental help plus case management for households at or below 50% of area median income.',es_desc:'Ayuda de alquiler continua más gestión de casos para hogares al 50% o menos del ingreso medio del área.',url:'https://www.fairfaxcounty.gov/housing/',ic:'rgba(188,49,74,.1)',is:'#BC314A'},
-    {maxAMI:80,en_name:'Emergency Rental Assistance Bridge',es_name:'Puente de Asistencia de Alquiler de Emergencia',en_desc:'Short-term rental help for households in crisis, facing eviction, sudden job loss, or other emergency.',es_desc:'Ayuda de alquiler a corto plazo para hogares en crisis, enfrentando desalojo, pérdida repentina de empleo.',url:'https://www.fairfaxcounty.gov/housing/',ic:'rgba(188,49,74,.1)',is:'#BC314A'},
+  {id:'crisis',en_label:'Crisis & Emergency',es_label:'Crisis y Emergencia',items:[
+    {status:true,en_name:'Emergency Shelters',es_name:'Albergues de Emergencia',en_desc:'Immediate shelter if you have no safe place to stay. Open regardless of income.',es_desc:'Albergue inmediato si no tiene un lugar seguro donde quedarse. Abierto independientemente del ingreso.',url:'https://www.fairfaxcounty.gov/homeless/emergency-shelters'},
+    {status:true,en_name:'Rapid Rehousing',es_name:'Realojamiento Rápido',en_desc:'Short-term rental help and case management to get into stable housing quickly. Based on housing situation, not income.',es_desc:'Ayuda de alquiler a corto plazo y gestión de casos para conseguir vivienda estable rápidamente.',url:'https://www.fairfaxcounty.gov/homeless/'},
+    {status:true,en_name:'Permanent Supportive Housing',es_name:'Vivienda de Apoyo Permanente',en_desc:'Long-term housing with support services for people experiencing chronic homelessness with a disability.',es_desc:'Vivienda a largo plazo con servicios de apoyo para personas sin hogar crónicas con una discapacidad.',url:'https://www.fairfaxcounty.gov/homeless/'},
+    {maxAMI:30,en_name:'Homelessness Prevention',es_name:'Prevención de Personas sin Hogar',en_desc:'Financial help to avoid eviction or utility shutoff. For households at or below 30% AMI.',es_desc:'Ayuda financiera para evitar el desalojo o el corte de servicios. Para hogares al 30% o menos del AMI.',url:'https://www.fairfaxcounty.gov/homeless/prevention'},
+    {maxAMI:50,en_name:'Rental Subsidy & Services Program',es_name:'Programa de Subsidio de Alquiler y Servicios',en_desc:'Ongoing rental help plus case management for households at or below 50% AMI.',es_desc:'Ayuda de alquiler continua más gestión de casos para hogares al 50% o menos del AMI.',url:'https://www.fairfaxcounty.gov/housing/'},
+    {maxAMI:80,en_name:'Emergency Rental Assistance Bridge',es_name:'Puente de Asistencia de Alquiler de Emergencia',en_desc:'Short-term rental help for households in crisis, facing eviction, sudden job loss, or other emergency.',es_desc:'Ayuda de alquiler a corto plazo para hogares en crisis, enfrentando desalojo o pérdida de empleo.',url:'https://www.fairfaxcounty.gov/housing/'},
   ]},
-  {id:'rental',en_label:'Affordable rental housing',es_label:'Vivienda de alquiler asequible',dot:'#075270',count_style:'background:rgba(7,82,112,.08);color:#033B52',items:[
-    {maxAMI:50,en_name:'Housing Choice Voucher (Section 8)',es_name:'Voucher de Elección de Vivienda (Sección 8)',en_desc:'Federal subsidy helping you rent a private apartment. You pay ~30% of your income, the voucher covers the rest. Waitlist is often closed, contact HCD for current status.',es_desc:'Subsidio federal para alquilar un apartamento privado. Usted paga ~30% de sus ingresos, el voucher cubre el resto. La lista de espera suele estar cerrada, contacte a HCD.',url:'https://www.fairfaxcounty.gov/housing/rentalhousing/housingchoicevoucher',ic:'rgba(7,82,112,.08)',is:'#075270'},
-    {maxAMI:80,en_name:'FCRHA Affordable Rental Portfolio',es_name:'Cartera de Alquiler Asequible de FCRHA',en_desc:'Affordable apartments owned by Fairfax County\'s housing authority, located throughout the county. Apply directly through HCD.',es_desc:'Apartamentos asequibles propiedad de la autoridad de vivienda del Condado de Fairfax. Solicite a través de HCD.',url:'https://www.fairfaxcounty.gov/housing/rentalhousing/fairfax-county-rental-program',ic:'rgba(7,82,112,.08)',is:'#075270'},
-    {maxAMI:60,en_name:'Tax Credit (LIHTC) Apartments',es_name:'Apartamentos de Crédito Tributario (LIHTC)',en_desc:'Privately owned apartments offering reduced rents through the federal Low-Income Housing Tax Credit program. Apply directly to each property.',es_desc:'Apartamentos de propiedad privada que ofrecen alquileres reducidos a través del programa federal de crédito tributario.',url:'https://www.fairfaxcounty.gov/housing/rentalhousing/privately-owned',ic:'rgba(7,82,112,.08)',is:'#075270'},
-    {maxAMI:70,en_name:'Affordable Dwelling Unit (ADU) Rentals',es_name:'Alquileres de Unidad de Vivienda Asequible (ADU)',en_desc:'Below-market apartments in newer communities throughout the county. Rents are capped based on income level.',es_desc:'Apartamentos por debajo del mercado en comunidades más nuevas en todo el condado.',url:'https://www.fairfaxcounty.gov/housing/rentalhousing/privately-owned',ic:'rgba(7,82,112,.08)',is:'#075270'},
-    {maxAMI:120,en_name:'Workforce Dwelling Unit (WDU) Rentals',es_name:'Alquileres de Unidad de Vivienda para la Fuerza Laboral (WDU)',en_desc:'Moderately priced rentals for households that earn too much for deep-subsidy programs but still struggle with market rents.',es_desc:'Alquileres moderadamente asequibles para hogares que ganan demasiado para programas de subsidio profundo pero aún tienen dificultades.',url:'https://www.fairfaxcounty.gov/housing/rentalhousing/privately-owned',ic:'rgba(7,82,112,.08)',is:'#075270'},
+  {id:'rental',en_label:'Rental Housing',es_label:'Vivienda de Alquiler',items:[
+    {maxAMI:50,en_name:'Housing Choice Voucher (Section 8)',es_name:'Voucher de Elección de Vivienda (Sección 8)',en_desc:'Federal subsidy helping you rent a private apartment. You pay ~30% of your income, the voucher covers the rest. Waitlist is often closed, contact HCD for current status.',es_desc:'Subsidio federal para alquilar un apartamento privado. Usted paga ~30% de sus ingresos, el voucher cubre el resto.',url:'https://www.fairfaxcounty.gov/housing/rentalhousing/housingchoicevoucher'},
+    {maxAMI:80,en_name:'FCRHA Affordable Rental Portfolio',es_name:'Cartera de Alquiler Asequible de FCRHA',en_desc:'Affordable apartments owned by Fairfax County\'s housing authority, located throughout the county.',es_desc:'Apartamentos asequibles propiedad de la autoridad de vivienda del Condado de Fairfax.',url:'https://www.fairfaxcounty.gov/housing/rentalhousing/fairfax-county-rental-program'},
+    {maxAMI:60,en_name:'Tax Credit (LIHTC) Apartments',es_name:'Apartamentos de Crédito Tributario (LIHTC)',en_desc:'Privately owned apartments offering reduced rents through the federal Low-Income Housing Tax Credit program.',es_desc:'Apartamentos de propiedad privada que ofrecen alquileres reducidos a través del crédito tributario federal.',url:'https://www.fairfaxcounty.gov/housing/rentalhousing/privately-owned'},
+    {maxAMI:70,en_name:'Affordable Dwelling Unit (ADU) Rentals',es_name:'Alquileres de Unidad de Vivienda Asequible (ADU)',en_desc:'Below-market apartments in newer communities throughout the county. Rents capped based on income level.',es_desc:'Apartamentos por debajo del mercado en comunidades más nuevas en todo el condado.',url:'https://www.fairfaxcounty.gov/housing/rentalhousing/privately-owned'},
+    {maxAMI:120,en_name:'Workforce Dwelling Unit (WDU) Rentals',es_name:'Alquileres de Unidad de Vivienda para la Fuerza Laboral (WDU)',en_desc:'Moderately priced rentals for households that earn too much for deep-subsidy programs but still struggle with market rents.',es_desc:'Alquileres moderadamente asequibles para hogares que ganan demasiado para subsidios profundos.',url:'https://www.fairfaxcounty.gov/housing/rentalhousing/privately-owned'},
   ]},
-  {id:'ownership',en_label:'Homeownership programs',es_label:'Programas de compra de vivienda',dot:'#027E71',count_style:'background:rgba(2,126,113,.1);color:#015C53',items:[
-    {maxAMI:80,en_name:'Down Payment Assistance Grant (CDBG)',es_name:'Subvención de Asistencia para Pago Inicial (CDBG)',en_desc:'Grant or forgivable loan to help first-time homebuyers cover the down payment. Federally funded.',es_desc:'Subvención o préstamo condonable para ayudar a los compradores de primera vivienda a cubrir el pago inicial.',url:'https://www.fairfaxcounty.gov/housing/cdbg',ic:'rgba(2,126,113,.1)',is:'#027E71'},
-    {maxAMI:80,en_name:'Down Payment Loan Program',es_name:'Programa de Préstamo para Pago Inicial',en_desc:'Low- or no-interest second mortgage from Fairfax County to help eligible first-time buyers cover their down payment.',es_desc:'Segunda hipoteca de bajo o ningún interés del Condado de Fairfax para ayudar a cubrir el pago inicial.',url:'https://www.fairfaxcounty.gov/housing/homeownership/downpaymentloan',ic:'rgba(2,126,113,.1)',is:'#027E71'},
-    {maxAMI:120,en_name:'Affordable For-Sale Homes (ADU/WDU)',es_name:'Viviendas Asequibles en Venta (ADU/WDU)',en_desc:'Below-market homes available for purchase in new developments across the county. Prices capped based on income limits.',es_desc:'Viviendas a precio inferior al mercado disponibles en nuevos desarrollos. Precios limitados según ingresos.',url:'https://www.fairfaxcounty.gov/housing/homeownership/homesforsale',ic:'rgba(2,126,113,.1)',is:'#027E71'},
-    {maxAMI:999,en_name:'VA & FHA Mortgage Programs',es_name:'Programas de Hipoteca VA y FHA',en_desc:'Government-backed loans open to most buyers. VA loans for eligible veterans, no down payment required. FHA loans have flexible credit requirements.',es_desc:'Préstamos respaldados por el gobierno. VA para veteranos elegibles, sin pago inicial requerido. FHA con requisitos de crédito flexibles.',url:'https://www.hud.gov/buying/loans',ic:'rgba(2,126,113,.1)',is:'#027E71'},
+  {id:'ownership',en_label:'Homeownership',es_label:'Compra de Vivienda',items:[
+    {maxAMI:80,en_name:'Down Payment Assistance Grant (CDBG)',es_name:'Subvención de Asistencia para Pago Inicial (CDBG)',en_desc:'Grant or forgivable loan to help first-time homebuyers cover the down payment. Federally funded.',es_desc:'Subvención o préstamo condonable para ayudar a compradores de primera vivienda a cubrir el pago inicial.',url:'https://www.fairfaxcounty.gov/housing/cdbg'},
+    {maxAMI:80,en_name:'Down Payment Loan Program',es_name:'Programa de Préstamo para Pago Inicial',en_desc:'Low- or no-interest second mortgage from Fairfax County to help eligible first-time buyers cover their down payment.',es_desc:'Segunda hipoteca de bajo o ningún interés del Condado de Fairfax para compradores de primera vivienda.',url:'https://www.fairfaxcounty.gov/housing/homeownership/downpaymentloan'},
+    {maxAMI:120,en_name:'Affordable For-Sale Homes (ADU/WDU)',es_name:'Viviendas Asequibles en Venta (ADU/WDU)',en_desc:'Below-market homes for purchase in new developments across the county. Prices capped based on income limits.',es_desc:'Viviendas a precio inferior al mercado en nuevos desarrollos en todo el condado.',url:'https://www.fairfaxcounty.gov/housing/homeownership/homesforsale'},
+    {maxAMI:999,en_name:'VA & FHA Mortgage Programs',es_name:'Programas de Hipoteca VA y FHA',en_desc:'Government-backed loans open to most buyers. VA loans for eligible veterans, no down payment required. FHA loans have flexible credit requirements.',es_desc:'Préstamos respaldados por el gobierno. VA para veteranos elegibles, sin pago inicial. FHA con requisitos flexibles.',url:'https://www.hud.gov/buying/loans'},
   ]},
 ];
 
 let sz=null, inc=60000, lang='en';
 
 function getLimit(pct,s){return(AMI[pct]||[])[(Math.min(s,8))-1]||0;}
-function calcAMI(income,s){let r=0;for(const k of[30,40,50,60,70,80,100,120,150])if(income>=getLimit(k,s))r=k;return r;}
-function isEligible(p,income,s){if(p.status||p.maxAMI>=999)return true;return income<getLimit(p.maxAMI,s);}
+function calcAMI(inc,s){let r=0;for(const k of[30,40,50,60,70,80,100,120,150])if(inc>=getLimit(k,s))r=k;return r;}
+function isEligible(p,inc,s){if(p.status||p.maxAMI>=999)return true;return inc<getLimit(p.maxAMI,s);}
 function fmt(n){return'$'+Math.round(n).toLocaleString();}
-
-function amiClass(ami){if(!ami)return'ami-crisis';if(ami<=50)return'ami-low';if(ami<=100)return'ami-mid';if(ami<=120)return'ami-work';return'ami-market';}
+function amiCls(ami){if(!ami||ami<=0)return'ami-crisis';if(ami<=80)return'ami-low';if(ami<=100)return'ami-mid';if(ami<=120)return'ami-work';return'ami-market';}
 
 function setLang(l){
   lang=l;
@@ -998,141 +563,116 @@ function setLang(l){
   updateDisplay();
 }
 
-document.querySelectorAll('.sz-btn').forEach(b=>{
-  b.addEventListener('click',()=>{
-    sz=+b.dataset.sz;
-    document.querySelectorAll('.sz-btn').forEach(x=>{x.classList.toggle('active',x===b);x.setAttribute('aria-pressed',x===b);});
-    document.getElementById('s1n').className='step-num done';
-    document.getElementById('s1l').className='step-label done';
-    document.getElementById('ln1').className='step-line done';
-    document.getElementById('s2n').className='step-num active';
-    document.getElementById('s2l').className='step-label active';
-    updateDisplay();
-    document.getElementById('card2').scrollIntoView({behavior:'smooth',block:'nearest'});
-  });
-});
+document.querySelectorAll('.sz-btn').forEach(b=>b.addEventListener('click',()=>{
+  sz=+b.dataset.sz;
+  document.querySelectorAll('.sz-btn').forEach(x=>{x.classList.toggle('active',x===b);x.setAttribute('aria-pressed',x===b);});
+  setStep(1,'done'); setStep(2,'active');
+  updateDisplay();
+  document.getElementById('card2').scrollIntoView({behavior:'smooth',block:'nearest'});
+}));
 
 document.getElementById('income-slider').addEventListener('input',function(){inc=+this.value;updateDisplay();});
+document.querySelectorAll('.quick-btn').forEach(b=>b.addEventListener('click',()=>{inc=+b.dataset.v;document.getElementById('income-slider').value=inc;updateDisplay();}));
 
-document.querySelectorAll('.quick-btn').forEach(b=>{
-  b.addEventListener('click',()=>{inc=+b.dataset.v;document.getElementById('income-slider').value=inc;updateDisplay();});
-});
+function setStep(n,state){
+  const ps=document.getElementById('ps'+n);
+  const pn=document.getElementById('pn'+n);
+  ps.className='prog-step '+state;
+  pn.className='prog-num';
+  if(state==='active')pn.style.background='var(--blue)';
+  else if(state==='done')pn.style.background='var(--green)';
+  else pn.style.background='';
+}
 
 function updateDisplay(){
-  const s=sz||4,ami=calcAMI(inc,s),fpl=FPL[s]||32150,belowFPL=inc<fpl;
-  const incTxt=inc>=350000?'$350,000+':fmt(inc);
-  document.getElementById('income-val').textContent=incTxt;
-  document.getElementById('income-slider').setAttribute('aria-valuenow',inc);
-  const pill=document.getElementById('ami-pill');
+  const s=sz||4,ami=calcAMI(inc,s),fpl=FPL[s]||32150,below=inc<fpl;
+  document.getElementById('income-val').textContent=inc>=350000?'$350,000+':fmt(inc);
+  const tag=document.getElementById('ami-tag');
   const amiTxt=inc>=350000?'Above 150% AMI':ami===0?'Below 30% AMI':`~${ami}% AMI`;
-  pill.textContent=amiTxt;
-  pill.className='ami-pill '+amiClass(ami);
-  const banner=document.getElementById('fpl-banner');
-  if(belowFPL){
-    banner.className='fpl-banner show';
-    banner.textContent=lang==='es'
-      ?`Su ingreso está por debajo del nivel federal de pobreza (${fmt(fpl)}/año para ${s} personas). Por favor llame al 703-246-5100 — hay ayuda disponible.`
-      :`Your income is below the federal poverty level (${fmt(fpl)}/year for ${s} persons). Please call 703-246-5100 — help is available.`;
-  } else { banner.className='fpl-banner'; }
+  tag.textContent=amiTxt; tag.className='ami-tag '+amiCls(ami);
+  const notice=document.getElementById('fpl-notice');
+  if(below){
+    notice.className='fpl-notice show';
+    notice.textContent=lang==='es'
+      ?`Su ingreso está por debajo del nivel federal de pobreza (${fmt(fpl)}/año para ${s} personas). Por favor llame al 703-246-5100.`
+      :`Your income is below the federal poverty level (${fmt(fpl)}/year for ${s} persons). Please call HCD at 703-246-5100.`;
+  } else { notice.className='fpl-notice'; }
 }
 
 function showResults(){
-  if(!sz){
-    const msg=lang==='es'?'Por favor seleccione el tamaño de su hogar primero.':'Please select your household size first.';
-    alert(msg);
-    document.getElementById('card1').scrollIntoView({behavior:'smooth'});
-    return;
-  }
-  document.getElementById('s2n').className='step-num done';
-  document.getElementById('s2l').className='step-label done';
-  document.getElementById('ln2').className='step-line done';
-  document.getElementById('s3n').className='step-num active';
-  document.getElementById('s3l').className='step-label active';
+  if(!sz){alert(lang==='es'?'Seleccione el tamaño de su hogar primero.':'Please select your household size first.');document.getElementById('card1').scrollIntoView({behavior:'smooth'});return;}
+  setStep(2,'done'); setStep(3,'active');
 
-  const ami=calcAMI(inc,sz),fpl=FPL[sz]||32150,belowFPL=inc<fpl;
-  const incLabel=inc>=350000?'$350,000+':fmt(inc);
-  const amiLabel=ami===0?(lang==='es'?'por debajo del 30% AMI':'below 30% AMI'):`${ami}% AMI`;
-
+  const ami=calcAMI(inc,sz),fpl=FPL[sz]||32150,below=inc<fpl;
+  const incLbl=inc>=350000?'$350,000+':fmt(inc);
+  const amiLbl=ami===0?(lang==='es'?'por debajo del 30% AMI':'below 30% AMI'):`${ami}% AMI`;
   document.getElementById('res-title').textContent=lang==='es'?'Programas para los que puede calificar':'Programs you may qualify for';
   document.getElementById('res-sub').innerHTML=lang==='es'
-    ?`${sz} persona${sz>1?'s':''} &nbsp;·&nbsp; ${incLabel}/año &nbsp;·&nbsp; <strong>${amiLabel}</strong>`
-    :`${sz} person${sz>1?'s':''} &nbsp;·&nbsp; ${incLabel}/year &nbsp;·&nbsp; <strong>${amiLabel}</strong>`;
+    ?`${sz} persona${sz>1?'s':''} &nbsp;·&nbsp; ${incLbl}/año &nbsp;·&nbsp; <strong>${amiLbl}</strong>`
+    :`${sz} person${sz>1?'s':''} &nbsp;·&nbsp; ${incLbl}/year &nbsp;·&nbsp; <strong>${amiLbl}</strong>`;
 
   let html='';
-
-  if(belowFPL){
-    html+=`<div class="callout callout-danger">${lang==='es'
-      ?`<strong>Puede necesitar ayuda inmediata.</strong> Su ingreso está por debajo del nivel federal de pobreza para ${sz} personas. Por favor llame a HCD al <strong>703-246-5100</strong> — hay programas de emergencia disponibles.`
-      :`<strong>You may need immediate help.</strong> Your income is below the federal poverty level for a ${sz}-person household. Please call HCD at <strong>703-246-5100</strong> — emergency programs are available for you.`}</div>`;
+  if(below){
+    html+=`<div class="alert alert-danger">${lang==='es'
+      ?`<strong>Puede necesitar ayuda inmediata.</strong> Su ingreso está por debajo del nivel federal de pobreza para un hogar de ${sz} personas. Por favor llame al <strong>703-246-5100</strong>.`
+      :`<strong>You may need immediate help.</strong> Your income is below the federal poverty level for a ${sz}-person household. Please call HCD at <strong>703-246-5100</strong>.`}</div>`;
+  }
+  if(ami>120){
+    html+=`<div class="alert alert-info">${lang==='es'
+      ?'<strong>Su ingreso supera la mayoría de los límites de programas.</strong> Puede calificar para préstamos VA o FHA. Visite fairfaxcounty.gov/housing para orientación adicional.'
+      :'<strong>Your income is above most program limits.</strong> You may qualify for VA or FHA mortgage loans. Visit fairfaxcounty.gov/housing for additional guidance.'}</div>`;
   }
 
-  // Column config
+  // Build 3-column grid — always show all three columns
+  const secMap={}; PROGS.forEach(s=>secMap[s.id]=s);
   const cols=[
-    {id:'crisis',   key:'crisis',   en_label:'Crisis & Emergency', es_label:'Crisis y Emergencia', dot:'#BC314A'},
-    {id:'rental',   key:'rental',   en_label:'Rental Housing',     es_label:'Vivienda de Alquiler', dot:'#004AAC'},
-    {id:'ownership',key:'ownership',en_label:'Homeownership',      es_label:'Compra de Vivienda',   dot:'#57AC19'},
+    {id:'crisis',   en_label:'Crisis & Emergency', es_label:'Crisis y Emergencia'},
+    {id:'rental',   en_label:'Rental Housing',     es_label:'Vivienda de Alquiler'},
+    {id:'ownership',en_label:'Homeownership',      es_label:'Compra de Vivienda'},
   ];
 
-  // Map sections by id
-  const secMap={};
-  PROGS.forEach(s=>secMap[s.id]=s);
-
   html+=`<div class="prog-grid">`;
-
   cols.forEach(col=>{
-    const section=secMap[col.id];
-    const elig=section?section.items.filter(p=>isEligible(p,inc,sz)):[];
-    const label=lang==='es'?col.es_label:col.en_label;
-    const countLabel=lang==='es'?`${elig.length} disponible${elig.length!==1?'s':''}`:`${elig.length} available`;
+    const sec=secMap[col.id];
+    const elig=sec?sec.items.filter(p=>isEligible(p,inc,sz)):[];
+    const lbl=lang==='es'?col.es_label:col.en_label;
+    const countLbl=elig.length
+      ?(lang==='es'?`${elig.length} programa${elig.length!==1?'s':''} disponible${elig.length!==1?'s':''}`:`${elig.length} program${elig.length!==1?'s':''} available`)
+      :(lang==='es'?'No hay programas disponibles':'No programs available');
 
     html+=`<div class="prog-col">
       <div class="prog-col-head ${col.id}">
-        <div class="prog-col-title ${col.id}">
-          <div class="prog-col-dot" style="background:${col.dot}"></div>
-          ${label}
-        </div>
-        <div class="prog-col-count">${countLabel}</div>
+        <div class="prog-col-label ${col.id}">${lbl}</div>
+        <div class="prog-col-count">${countLbl}</div>
       </div>
       <div class="prog-col-body">`;
 
-    if(elig.length===0){
-      html+=`<div class="prog-col-empty">${lang==='es'
-        ?'No hay programas disponibles a este nivel de ingresos.'
-        :'No programs available at this income level.'}</div>`;
+    if(!elig.length){
+      html+=`<div class="prog-empty">${lang==='es'?'No hay programas disponibles a este nivel de ingresos.':'No programs available at this income level.'}</div>`;
     } else {
       elig.forEach(p=>{
         const name=lang==='es'?p.es_name:p.en_name;
         const desc=lang==='es'?p.es_desc:p.en_desc;
-        const linkTxt=lang==='es'?'Ver detalles ↗':'View details ↗';
-
+        const linkTxt=lang==='es'?'Más información ↗':'Learn more ↗';
         if(p.status){
-          html+=`<div class="prog-item">
-            <div class="prog-item-status">Housing-status based</div>
-            <div class="prog-item-name ${col.id}">${name}</div>
-            <div class="prog-item-desc">${desc}</div>
-            <a href="${p.url}" target="_blank" rel="noopener" class="prog-item-link ${col.id}">${linkTxt}</a>
+          html+=`<div class="prog-row status-row">
+            <div class="prog-status-tag">${lang==='es'?'Basado en situación':'Housing-status based'}</div>
+            <div class="prog-row-name ${col.id}">${name}</div>
+            <div class="prog-row-desc">${desc}</div>
+            <a href="${p.url}" target="_blank" rel="noopener" class="prog-row-link ${col.id}">${linkTxt}</a>
           </div>`;
         } else {
-          html+=`<a href="${p.url}" target="_blank" rel="noopener" class="prog-item">
-            <div class="prog-item-name ${col.id}">${name}</div>
-            <div class="prog-item-desc">${desc}</div>
-            <span class="prog-item-link ${col.id}">${linkTxt}</span>
+          html+=`<a href="${p.url}" target="_blank" rel="noopener" class="prog-row">
+            <div class="prog-row-name ${col.id}">${name}</div>
+            <div class="prog-row-desc">${desc}</div>
+            <span class="prog-row-link ${col.id}">${linkTxt}</span>
           </a>`;
         }
       });
     }
-
     html+=`</div></div>`;
   });
-
   html+=`</div>`;
-
-  // Market-rate fallback if above all thresholds
-  if(ami>120){
-    html+=`<div class="callout callout-info">${lang==='es'
-      ?'<strong>Su ingreso supera los límites de la mayoría de los programas.</strong> Puede calificar para préstamos VA o FHA. Visite HCD en línea para orientación sobre vivienda de mercado.'
-      :'<strong>Your income is above most program limits.</strong> You may still qualify for VA or FHA mortgage loans. Visit HCD online for market-rate housing guidance.'}</div>`;
-  }
 
   document.getElementById('res-body').innerHTML=html;
   const rs=document.getElementById('results');
@@ -1140,7 +680,7 @@ function showResults(){
   setTimeout(()=>{rs.scrollIntoView({behavior:'smooth',block:'start'});rs.focus();},100);
 }
 
-function scrollTop(){document.getElementById('card1').scrollIntoView({behavior:'smooth',block:'start'});}
+function scrollTop(){document.getElementById('card1').scrollIntoView({behavior:'smooth'});}
 updateDisplay();
 </script>
 </body>
