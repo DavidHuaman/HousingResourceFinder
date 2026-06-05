@@ -436,32 +436,132 @@ input[type="range"] {
 }
 .results-header strong { color: #fff; font-weight: 700; }
 
-/* ── PROGRAM SECTION HEAD ───────────────────────────────────── */
-.prog-section { margin-bottom: 20px; }
-.prog-section-head {
+/* ── 3-COLUMN PROGRAM GRID ──────────────────────────────────── */
+.prog-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin-bottom: 20px;
+  align-items: start;
+}
+.prog-col {
+  background: #fff;
+  border-radius: var(--r-sm);
+  box-shadow: inset 2px 3px 7px 0 rgba(0,54,103,.07), 2px 2px 7px 0 rgba(0,54,103,.06);
+  overflow: hidden;
   display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 10px;
-  padding-bottom: 10px;
-  border-bottom: 2px solid var(--ltGray);
+  flex-direction: column;
 }
-.prog-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
-.prog-section-title {
-  font-size: 14px;
-  font-weight: 700;
-  color: var(--hcd-blue-dk);
-  text-transform: uppercase;
-  letter-spacing: .07em;
+.prog-col-head {
+  padding: 14px 16px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  border-bottom: 3px solid transparent;
 }
-.prog-count {
-  margin-left: auto;
+.prog-col-head.crisis    { background: rgba(188,49,74,.07);  border-color: #BC314A; }
+.prog-col-head.rental    { background: var(--hcd-blue-lt);   border-color: var(--hcd-blue); }
+.prog-col-head.ownership { background: var(--hcd-green-lt);  border-color: var(--hcd-green); }
+.prog-col-title {
   font-size: 12px;
   font-weight: 700;
-  padding: 3px 11px;
+  text-transform: uppercase;
+  letter-spacing: .07em;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+.prog-col-title.crisis    { color: #8B2228; }
+.prog-col-title.rental    { color: var(--hcd-blue-dk); }
+.prog-col-title.ownership { color: var(--hcd-green-dk); }
+.prog-col-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.prog-col-count {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--dkGray);
+}
+.prog-col-body {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+
+/* Slim program item inside column */
+.prog-item {
+  background: var(--ltBlueGray);
+  border-radius: 8px;
+  padding: 12px 13px;
+  text-decoration: none;
+  display: block;
+  transition: background .13s, box-shadow .13s;
+}
+.prog-item:hover {
+  background: #fff;
+  box-shadow: 0 2px 10px rgba(0,54,103,.10);
+}
+.prog-item-name {
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.3;
+  margin-bottom: 4px;
+}
+.prog-item-name.crisis    { color: #8B2228; }
+.prog-item-name.rental    { color: var(--hcd-blue-dk); }
+.prog-item-name.ownership { color: var(--hcd-green-dk); }
+.prog-item-desc {
+  font-size: 11.5px;
+  color: var(--dkGray);
+  line-height: 1.45;
+  margin-bottom: 7px;
+  font-weight: 400;
+}
+.prog-item-link {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+}
+.prog-item-link.crisis    { color: #BC314A; }
+.prog-item-link.rental    { color: var(--hcd-blue); }
+.prog-item-link.ownership { color: var(--hcd-green-dk); }
+
+/* Status item (no external link, housing-status based) */
+.prog-item-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 10.5px;
+  font-weight: 700;
+  color: var(--hcd-orange-dk);
+  background: var(--hcd-orange-lt);
+  padding: 2px 9px;
   border-radius: 28px;
   text-transform: uppercase;
   letter-spacing: .04em;
+  margin-bottom: 6px;
+}
+
+/* Empty column state */
+.prog-col-empty {
+  padding: 14px 16px;
+  font-size: 12.5px;
+  color: var(--dkGray);
+  font-style: italic;
+  line-height: 1.5;
+}
+
+@media (max-width: 700px) {
+  .prog-grid { grid-template-columns: 1fr; }
 }
 
 /* ── PROGRAM CARD ───────────────────────────────────────────── */
@@ -714,7 +814,7 @@ input[type="range"] {
 <section class="hero">
   <div class="hero-tag" data-en="Free resource finder" data-es="Buscador de recursos gratuito">Free resource finder</div>
   <h1 data-en="Find housing help in Fairfax County" data-es="Encuentre ayuda de vivienda en el Condado de Fairfax">Find housing help in Fairfax County</h1>
-  <p data-en="Answer two quick questions to see which housing programs you may be eligible for — with direct links to apply." data-es="Responda dos preguntas rápidas para ver qué programas de vivienda puede ser elegible — con enlaces directos para solicitar.">Answer two quick questions to see which housing programs you may be eligible for — with direct links to apply.</p>
+  <p data-en="Answer two quick questions to see which housing programs you may be eligible for." data-es="Responda dos preguntas rápidas para ver qué programas de vivienda puede ser elegible.">Answer two quick questions to see which housing programs you may be eligible for.</p>
 </section>
 
 <main class="main">
@@ -818,7 +918,7 @@ input[type="range"] {
     <div class="contact-card">
       <div class="contact-text">
         <h3 data-en="Ready to apply? We're here to help." data-es="¿Listo para solicitar? Estamos aquí para ayudar.">Ready to apply? We're here to help.</h3>
-        <p data-en="HCD staff can answer questions, check waitlist status, and guide you through applications — at no cost." data-es="El personal de HCD puede responder preguntas, verificar el estado de la lista de espera y guiarlo a través de las solicitudes, sin costo.">HCD staff can answer questions, check waitlist status, and guide you through applications — at no cost.</p>
+        <p data-en="HCD staff can answer questions, check waitlist status, and guide you through applications." data-es="El personal de HCD puede responder preguntas, verificar el estado de la lista de espera y guiarlo a través de las solicitudes.">HCD staff can answer questions, check waitlist status, and guide you through applications.</p>
       </div>
       <div class="contact-btns">
         <a href="https://www.fairfaxcounty.gov/housing/" target="_blank" rel="noopener" class="c-btn c-btn-primary">
@@ -865,10 +965,10 @@ const PROGS=[
     {status:true,en_name:'Permanent Supportive Housing',es_name:'Vivienda de Apoyo Permanente',en_desc:'Long-term housing with support services for individuals experiencing chronic homelessness who also have a disability.',es_desc:'Vivienda a largo plazo con servicios de apoyo para personas sin hogar crónicas con una discapacidad.',url:'https://www.fairfaxcounty.gov/homeless/',ic:'rgba(188,49,74,.1)',is:'#BC314A'},
     {maxAMI:30,en_name:'Homelessness Prevention',es_name:'Prevención de Personas sin Hogar',en_desc:'Financial help to avoid eviction or utility shutoff. For households at or below 30% of the area median income.',es_desc:'Ayuda financiera para evitar el desalojo o el corte de servicios públicos.',url:'https://www.fairfaxcounty.gov/homeless/prevention',ic:'rgba(188,49,74,.1)',is:'#BC314A'},
     {maxAMI:50,en_name:'Rental Subsidy & Services Program',es_name:'Programa de Subsidio de Alquiler y Servicios',en_desc:'Ongoing rental help plus case management for households at or below 50% of area median income.',es_desc:'Ayuda de alquiler continua más gestión de casos para hogares al 50% o menos del ingreso medio del área.',url:'https://www.fairfaxcounty.gov/housing/',ic:'rgba(188,49,74,.1)',is:'#BC314A'},
-    {maxAMI:80,en_name:'Emergency Rental Assistance Bridge',es_name:'Puente de Asistencia de Alquiler de Emergencia',en_desc:'Short-term rental help for households in crisis — facing eviction, sudden job loss, or other emergency.',es_desc:'Ayuda de alquiler a corto plazo para hogares en crisis — enfrentando desalojo, pérdida repentina de empleo.',url:'https://www.fairfaxcounty.gov/housing/',ic:'rgba(188,49,74,.1)',is:'#BC314A'},
+    {maxAMI:80,en_name:'Emergency Rental Assistance Bridge',es_name:'Puente de Asistencia de Alquiler de Emergencia',en_desc:'Short-term rental help for households in crisis, facing eviction, sudden job loss, or other emergency.',es_desc:'Ayuda de alquiler a corto plazo para hogares en crisis, enfrentando desalojo, pérdida repentina de empleo.',url:'https://www.fairfaxcounty.gov/housing/',ic:'rgba(188,49,74,.1)',is:'#BC314A'},
   ]},
   {id:'rental',en_label:'Affordable rental housing',es_label:'Vivienda de alquiler asequible',dot:'#075270',count_style:'background:rgba(7,82,112,.08);color:#033B52',items:[
-    {maxAMI:50,en_name:'Housing Choice Voucher (Section 8)',es_name:'Voucher de Elección de Vivienda (Sección 8)',en_desc:'Federal subsidy helping you rent a private apartment. You pay ~30% of your income; the voucher covers the rest. Waitlist is often closed — contact HCD for current status.',es_desc:'Subsidio federal para alquilar un apartamento privado. Usted paga ~30% de sus ingresos. La lista de espera suele estar cerrada — contacte a HCD.',url:'https://www.fairfaxcounty.gov/housing/rentalhousing/housingchoicevoucher',ic:'rgba(7,82,112,.08)',is:'#075270'},
+    {maxAMI:50,en_name:'Housing Choice Voucher (Section 8)',es_name:'Voucher de Elección de Vivienda (Sección 8)',en_desc:'Federal subsidy helping you rent a private apartment. You pay ~30% of your income, the voucher covers the rest. Waitlist is often closed, contact HCD for current status.',es_desc:'Subsidio federal para alquilar un apartamento privado. Usted paga ~30% de sus ingresos, el voucher cubre el resto. La lista de espera suele estar cerrada, contacte a HCD.',url:'https://www.fairfaxcounty.gov/housing/rentalhousing/housingchoicevoucher',ic:'rgba(7,82,112,.08)',is:'#075270'},
     {maxAMI:80,en_name:'FCRHA Affordable Rental Portfolio',es_name:'Cartera de Alquiler Asequible de FCRHA',en_desc:'Affordable apartments owned by Fairfax County\'s housing authority, located throughout the county. Apply directly through HCD.',es_desc:'Apartamentos asequibles propiedad de la autoridad de vivienda del Condado de Fairfax. Solicite a través de HCD.',url:'https://www.fairfaxcounty.gov/housing/rentalhousing/fairfax-county-rental-program',ic:'rgba(7,82,112,.08)',is:'#075270'},
     {maxAMI:60,en_name:'Tax Credit (LIHTC) Apartments',es_name:'Apartamentos de Crédito Tributario (LIHTC)',en_desc:'Privately owned apartments offering reduced rents through the federal Low-Income Housing Tax Credit program. Apply directly to each property.',es_desc:'Apartamentos de propiedad privada que ofrecen alquileres reducidos a través del programa federal de crédito tributario.',url:'https://www.fairfaxcounty.gov/housing/rentalhousing/privately-owned',ic:'rgba(7,82,112,.08)',is:'#075270'},
     {maxAMI:70,en_name:'Affordable Dwelling Unit (ADU) Rentals',es_name:'Alquileres de Unidad de Vivienda Asequible (ADU)',en_desc:'Below-market apartments in newer communities throughout the county. Rents are capped based on income level.',es_desc:'Apartamentos por debajo del mercado en comunidades más nuevas en todo el condado.',url:'https://www.fairfaxcounty.gov/housing/rentalhousing/privately-owned',ic:'rgba(7,82,112,.08)',is:'#075270'},
@@ -878,7 +978,7 @@ const PROGS=[
     {maxAMI:80,en_name:'Down Payment Assistance Grant (CDBG)',es_name:'Subvención de Asistencia para Pago Inicial (CDBG)',en_desc:'Grant or forgivable loan to help first-time homebuyers cover the down payment. Federally funded.',es_desc:'Subvención o préstamo condonable para ayudar a los compradores de primera vivienda a cubrir el pago inicial.',url:'https://www.fairfaxcounty.gov/housing/cdbg',ic:'rgba(2,126,113,.1)',is:'#027E71'},
     {maxAMI:80,en_name:'Down Payment Loan Program',es_name:'Programa de Préstamo para Pago Inicial',en_desc:'Low- or no-interest second mortgage from Fairfax County to help eligible first-time buyers cover their down payment.',es_desc:'Segunda hipoteca de bajo o ningún interés del Condado de Fairfax para ayudar a cubrir el pago inicial.',url:'https://www.fairfaxcounty.gov/housing/homeownership/downpaymentloan',ic:'rgba(2,126,113,.1)',is:'#027E71'},
     {maxAMI:120,en_name:'Affordable For-Sale Homes (ADU/WDU)',es_name:'Viviendas Asequibles en Venta (ADU/WDU)',en_desc:'Below-market homes available for purchase in new developments across the county. Prices capped based on income limits.',es_desc:'Viviendas a precio inferior al mercado disponibles en nuevos desarrollos. Precios limitados según ingresos.',url:'https://www.fairfaxcounty.gov/housing/homeownership/homesforsale',ic:'rgba(2,126,113,.1)',is:'#027E71'},
-    {maxAMI:999,en_name:'VA & FHA Mortgage Programs',es_name:'Programas de Hipoteca VA y FHA',en_desc:'Government-backed loans open to most buyers. VA loans for eligible veterans — no down payment required. FHA loans have flexible credit requirements.',es_desc:'Préstamos respaldados por el gobierno. VA para veteranos elegibles sin pago inicial. FHA con requisitos de crédito flexibles.',url:'https://www.hud.gov/buying/loans',ic:'rgba(2,126,113,.1)',is:'#027E71'},
+    {maxAMI:999,en_name:'VA & FHA Mortgage Programs',es_name:'Programas de Hipoteca VA y FHA',en_desc:'Government-backed loans open to most buyers. VA loans for eligible veterans, no down payment required. FHA loans have flexible credit requirements.',es_desc:'Préstamos respaldados por el gobierno. VA para veteranos elegibles, sin pago inicial requerido. FHA con requisitos de crédito flexibles.',url:'https://www.hud.gov/buying/loans',ic:'rgba(2,126,113,.1)',is:'#027E71'},
   ]},
 ];
 
@@ -959,81 +1059,79 @@ function showResults(){
     :`${sz} person${sz>1?'s':''} &nbsp;·&nbsp; ${incLabel}/year &nbsp;·&nbsp; <strong>${amiLabel}</strong>`;
 
   let html='';
+
   if(belowFPL){
     html+=`<div class="callout callout-danger">${lang==='es'
       ?`<strong>Puede necesitar ayuda inmediata.</strong> Su ingreso está por debajo del nivel federal de pobreza para ${sz} personas. Por favor llame a HCD al <strong>703-246-5100</strong> — hay programas de emergencia disponibles.`
       :`<strong>You may need immediate help.</strong> Your income is below the federal poverty level for a ${sz}-person household. Please call HCD at <strong>703-246-5100</strong> — emergency programs are available for you.`}</div>`;
   }
 
-  let anyEligible=false;
-  PROGS.forEach(section=>{
-    const elig=section.items.filter(p=>isEligible(p,inc,sz));
-    if(!elig.length)return;
-    anyEligible=true;
-    const label=lang==='es'?section.es_label:section.en_label;
-    const statusItems=elig.filter(p=>p.status);
-    const incItems=elig.filter(p=>!p.status);
-    const countLabel=lang==='es'?`${elig.length} disponible${elig.length>1?'s':''}`:`${elig.length} available`;
+  // Column config
+  const cols=[
+    {id:'crisis',   key:'crisis',   en_label:'Crisis & Emergency', es_label:'Crisis y Emergencia', dot:'#BC314A'},
+    {id:'rental',   key:'rental',   en_label:'Rental Housing',     es_label:'Vivienda de Alquiler', dot:'#004AAC'},
+    {id:'ownership',key:'ownership',en_label:'Homeownership',      es_label:'Compra de Vivienda',   dot:'#57AC19'},
+  ];
 
-    html+=`<div class="prog-section">
-      <div class="prog-section-head">
-        <div class="prog-dot" style="background:${section.dot}"></div>
-        <div class="prog-section-title">${label}</div>
-        <span class="prog-count" style="${section.count_style}">${countLabel}</span>
-      </div>`;
+  // Map sections by id
+  const secMap={};
+  PROGS.forEach(s=>secMap[s.id]=s);
 
-    if(statusItems.length){
-      html+=`<div style="font-size:12.5px;color:var(--dkGray);margin-bottom:8px;padding:8px 12px;background:var(--themeGrayBlue);border-radius:8px;">${lang==='es'
-        ?'<strong style="color:var(--baseFontColor)">Basado en situación de vivienda:</strong> Estos programas son para personas actualmente sin hogar o en crisis de vivienda.'
-        :'<strong style="color:var(--baseFontColor)">Based on housing situation:</strong> These programs are for people currently experiencing homelessness or a housing crisis.'}</div>`;
-      statusItems.forEach(p=>{
+  html+=`<div class="prog-grid">`;
+
+  cols.forEach(col=>{
+    const section=secMap[col.id];
+    const elig=section?section.items.filter(p=>isEligible(p,inc,sz)):[];
+    const label=lang==='es'?col.es_label:col.en_label;
+    const countLabel=lang==='es'?`${elig.length} disponible${elig.length!==1?'s':''}`:`${elig.length} available`;
+
+    html+=`<div class="prog-col">
+      <div class="prog-col-head ${col.id}">
+        <div class="prog-col-title ${col.id}">
+          <div class="prog-col-dot" style="background:${col.dot}"></div>
+          ${label}
+        </div>
+        <div class="prog-col-count">${countLabel}</div>
+      </div>
+      <div class="prog-col-body">`;
+
+    if(elig.length===0){
+      html+=`<div class="prog-col-empty">${lang==='es'
+        ?'No hay programas disponibles a este nivel de ingresos.'
+        :'No programs available at this income level.'}</div>`;
+    } else {
+      elig.forEach(p=>{
         const name=lang==='es'?p.es_name:p.en_name;
         const desc=lang==='es'?p.es_desc:p.en_desc;
-        const linkTxt=lang==='es'?'Más información':'Learn more & contact';
-        html+=`<div class="status-card">
-          <div class="status-card-name">${name}</div>
-          <div class="status-card-desc">${desc}</div>
-          <span class="status-badge">${lang==='es'?'Basado en vivienda':'Housing-status based'}</span>
-          <a href="${p.url}" target="_blank" rel="noopener" class="prog-link">${linkTxt} &#8599;</a>
-        </div>`;
+        const linkTxt=lang==='es'?'Ver detalles ↗':'View details ↗';
+
+        if(p.status){
+          html+=`<div class="prog-item">
+            <div class="prog-item-status">Housing-status based</div>
+            <div class="prog-item-name ${col.id}">${name}</div>
+            <div class="prog-item-desc">${desc}</div>
+            <a href="${p.url}" target="_blank" rel="noopener" class="prog-item-link ${col.id}">${linkTxt}</a>
+          </div>`;
+        } else {
+          html+=`<a href="${p.url}" target="_blank" rel="noopener" class="prog-item">
+            <div class="prog-item-name ${col.id}">${name}</div>
+            <div class="prog-item-desc">${desc}</div>
+            <span class="prog-item-link ${col.id}">${linkTxt}</span>
+          </a>`;
+        }
       });
     }
 
-    incItems.forEach(p=>{
-      const name=lang==='es'?p.es_name:p.en_name;
-      const desc=lang==='es'?p.es_desc:p.en_desc;
-      const linkTxt=lang==='es'?'Ver detalles y solicitar':'View details & apply';
-      html+=`<a href="${p.url}" target="_blank" rel="noopener" class="prog-card">
-        <div class="prog-icon" style="background:${p.ic}">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="${p.is}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-        </div>
-        <div class="prog-body">
-          <div class="prog-name">${name}</div>
-          <div class="prog-desc">${desc}</div>
-          <span class="prog-link">${linkTxt} &#8599;</span>
-        </div>
-        <svg class="prog-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
-      </a>`;
-    });
-
-    html+=`</div>`;
+    html+=`</div></div>`;
   });
 
-  if(!anyEligible||ami>150){
+  html+=`</div>`;
+
+  // Market-rate fallback if above all thresholds
+  if(ami>120){
     html+=`<div class="callout callout-info">${lang==='es'
-      ?'<strong>No se encontraron programas basados en ingresos a este nivel.</strong> Puede calificar para préstamos VA o FHA. Visite HCD en línea para orientación sobre vivienda de mercado.'
-      :'<strong>No income-restricted programs found at this level.</strong> You may still qualify for VA or FHA mortgage loans. Visit HCD online for market-rate housing guidance.'}</div>
-    <a href="https://www.hud.gov/buying/loans" target="_blank" rel="noopener" class="prog-card">
-      <div class="prog-icon" style="background:rgba(2,126,113,.1)">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#027E71" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-      </div>
-      <div class="prog-body">
-        <div class="prog-name">${lang==='es'?'Programas de Hipoteca VA y FHA':'VA & FHA Mortgage Programs'}</div>
-        <div class="prog-desc">${lang==='es'?'Préstamos respaldados por el gobierno con pagos iniciales más bajos. VA para veteranos elegibles sin pago inicial requerido. FHA para todos los compradores.':'Government-backed loans with lower down payments. VA loans for eligible veterans — no down payment required. FHA loans open to all buyers.'}</div>
-        <span class="prog-link">${lang==='es'?'Ver detalles':'View details'} &#8599;</span>
-      </div>
-      <svg class="prog-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
-    </a>`;
+      ?'<strong>Su ingreso supera los límites de la mayoría de los programas.</strong> Puede calificar para préstamos VA o FHA. Visite HCD en línea para orientación sobre vivienda de mercado.'
+      :'<strong>Your income is above most program limits.</strong> You may still qualify for VA or FHA mortgage loans. Visit HCD online for market-rate housing guidance.'}</div>`;
   }
 
   document.getElementById('res-body').innerHTML=html;
